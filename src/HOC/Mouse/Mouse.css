@@ -1,0 +1,43 @@
+.cursor {
+	position: fixed;
+	left: 0;
+	top: 0;
+	pointer-events: none;
+}
+
+.cursorSmall {
+	position: fixed;
+	width: 6px;
+	height: 6px;
+	left: -3px;
+	top: -3px;
+	border-radius: 50%;
+	z-index: 11000;
+}
+
+.cursorBig {
+	width: 30px;	
+	height: 30px;
+	left: -15px;
+	top: -15px;	
+	border-radius: 50%;			
+	z-index: 10000;
+	transition: 0.15s;
+	transition-timing-function: ease-out;
+}
+
+.whiteSmall {
+	background: #fff;
+}
+
+.whiteBig {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.blackSmall {
+	background: black;
+}
+
+.blackBig {
+    background: rgba(0, 0, 0, 0.25);
+}

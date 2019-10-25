@@ -1,0 +1,30 @@
+Web Technologies Project
+--------------------------------------------------------------
+Structure:
+---
+• App
+	• Layout
+		• Background
+		• Logo and Sign Up / Login button
+		• NavBar
+		• Content
+			*conditionally rendered stuffs*
+
+TODO:
+---
+• Components to create - Drishti and Bhavana
+	• Background - Drishti
+	• Button - Drishti
+	• NavBar - Drishti
+	• Card - Drishti
+	• Slider - Drishti
+	• CardExpansion - Bhavana
+	• CardExpansionSlide - Bhavana
+	• FormField - Bhavana
+	• FormDropdownField - Bhavana
+	• Layout - Sashwat
+	• App - Sashwat	
+
+• Design screens for mobile - Sashwat
+
+• Develop DB object model, post / get logic - Sashwat
