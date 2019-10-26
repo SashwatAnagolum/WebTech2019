@@ -1,0 +1,37 @@
+const templateCard = document.createElement('template');
+
+templateCard.innerHTML = `
+    <link rel="stylesheet" type="text/css" href="./components/Card/Card.css" />
+	<div class="cardContainer" id="cardContainer">
+        <div class="image" id="imageDiv">
+            <img class="image" id="image"></img>
+        </div>
+        <div class="line" id="line"></div>
+        <div class="text" id="text">
+            <div class="cardHeading" id="cardHeading"></div>
+            <div class="cardSubHeading" id="cardSubHeading"></div>
+        </div>
+	</div>
+`;
+
+class Card extends HTMLElement {
+	constructor() {
+		super();
+
+    	this.attachShadow({ mode: 'open' });
+    	this.shadowRoot.appendChild(templateCard.content.cloneNode(true));	
+
+        this.cardContainerDiv = this.shadowRoot.getElementById('cardContainer');
+        this.image = this.shadowRoot.getElementById('image');
+        this.cardHeading = this.shadowRoot.getElementById('cardHeading');
+        this.cardSubHeading = this.shadowRoot.getElementById('cardSubHeading');
+	}
+
+	connectedCallback() {
+        this.image.setAttribute("src", this.getAttribute("imgSrc"));
+    	this.cardHeading.innerHTML = this.getAttribute("heading"); 
+        this.cardSubHeading.innerHTML = this.getAttribute("subHeading");                  		
+    }
+}
+
+window.customElements.define('travel-card', Card); 

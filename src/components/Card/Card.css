@@ -1,0 +1,33 @@
+.cardContainer {
+    width: 26vw;
+    height: 33vw;
+    border-radius: .5vw;
+    box-shadow: -4px 3px 20px #ccc; 
+}
+
+.image {
+    width: 26vw;
+    height: 28vw;
+    border-top-left-radius: .9vw;
+    border-top-right-radius: .9vw;
+}
+
+.line {
+    width: 26vw;
+    height: .2vw;
+    background-color: #d0d0d0;
+}
+
+.cardHeading {
+    font-size: 2vw;
+    text-align: center;
+    font-family: 'Roboto Slab';
+}
+
+.cardSubHeading {
+    font-size: 1.5vw;
+    color: #737377;
+    text-align: center;
+    font-family: 'Roboto Slab';
+}
+

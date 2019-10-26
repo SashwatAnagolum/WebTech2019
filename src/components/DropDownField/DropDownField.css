@@ -1,0 +1,29 @@
+.dropDown {
+    width: 18vw;
+    height: 5.7vw;
+}
+
+.field {
+    font-size: 1vw;
+    font-family: 'Microsoft Tai Le';
+    color: #d0d0d0;
+    padding: 2%;
+}
+
+.dropDiv {
+    width: 18vw;
+    height: 3.8vw;
+}
+
+.drop {
+    width: 18vw;
+    height: 3.8vw;
+    font-size: 1.25vw;
+    font-family: 'Microsoft Tai Le';
+    color: #737373;
+    padding: 2%;
+}
+
+select option:hover {
+    box-shadow: 10 20 10px 100px black inset;
+}

@@ -1,0 +1,54 @@
+.navBarTop {
+    width: 98vw;
+    height: 2.6vw;
+    position: fixed;
+    left: 2vw;
+    top: 1.5vw;
+}
+
+.navLogo {
+    font-size: 2vw;
+    font-family: 'Roboto Slab';
+    color: #d0d0d0;
+    font-weight: bold;
+}
+
+.otherNav {
+    width: 0.7vw;
+    height: 7vw;
+}
+
+.white {
+    width: .4vw;
+    height: .4vw;
+    border: 1px solid black;
+    border-radius: 100vw;
+    margin: 0.75vw;
+}
+
+.whiteselected {
+    width: .4vw;
+    height: .4vw;
+    border-radius: 100vw;
+    border: 1px solid black;
+    background-color: black;
+    margin: 0.75vw;
+}
+
+.blue {
+    width: .4vw;
+    height: .4vw;
+    border-color:transparent;
+    border: 1px solid white;
+    border-radius: 100vw;
+    margin: 0.75vw;
+}
+
+.blueselected {
+    width: .4vw;
+    height: .4vw;
+    border: 1px solid white;
+    border-radius: 100vw;
+    background-color:white;
+    margin: 0.75vw;
+}
