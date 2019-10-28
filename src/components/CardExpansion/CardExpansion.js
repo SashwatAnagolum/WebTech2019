@@ -3,12 +3,14 @@ const templateCardExpansion = document.createElement('template');
 templateCardExpansion.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/CardExpansion/CardExpansion.css" />
 	<div class="cardContainer" id="cardContainer">
-        <img class="cardImage" id="cardImage" src=""></img>
+        <img draggable="false" class="cardImage" id="cardImage" src=""></img>
+        <div class="filter"></div>        
         <div class="callAction" id="callAction">
             <div class="cardHeading" id="cardHeading"></div>
             <div class="cardSubHeading" id="cardSubHeading"></div>
+            <new-button type="cardSlide" text="Add trip" class=newButton""></new-button>
         </div>
-        <div class="cardText" id="cardText"></div>
+        <div class="cardText"><p id="cardText"></p></div>
 	</div>
 `;
 
@@ -21,43 +23,36 @@ class CardExpansion extends HTMLElement {
 
     	this.cardImage = this.shadowRoot.getElementById('cardImage');
         this.cardHeading = this.shadowRoot.getElementById('cardHeading');
-        this.cardSubHeading = this.shadowRoot.getElementById('cardSubHeading');
-        this.cardText = this.shadowRoot.getElementById('cardText');
-	}
+        this.cardSubHeading = this.shadowRoot.getElementById('cardSubHeading');   
+	    this.cardText = this.shadowRoot.getElementById('cardText');
+    }
 
 	connectedCallback() {  
-        var card =  new Object();
-        card.place = 'Bora Bora';
-        card.country = 'French Polynesia';
-        var slide1 = new Object();
-        slide1.image = './components/CardExpansion/BOR_429_aspect16x9.jpg';
-        slide1.description = 'Stay at some of the most scenic resorts in the world';
-        var slide2 = new Object();
-        slide2.image = '';
-        slide2.description = 'Sail at sunset as the lagoon turns magenta and the sky fades into a magical dusk';
-        var slide3 = new Object();
-        slide3.image = '';
-        slide3.description = 'Watch Polynesian dancers perform the traditional Tahitian fire dance';
-        var slide4 = new Object();
-        slide4.image = '';
-        slide4.description = 'Snorkel amongst the fish in sand bottomed lagoons';
-        card.info = [slide1, slide2, slide3, slide4];
-        if (this.getAttribute('slide') == 'slide1') {
-            this.cardImage.setAttribute('src', card.info[0].image);
-            this.cardText.innerHTML = card.info[0].description;
+        const card =  {
+            place: 'Bora Bora',
+            country: 'French Polynesia',
+            info: {
+                slide1: {
+                   image: '../assets/CardExpansions/BoraBora/1.jpg',
+                   description: 'Stay at some of the most scenic resorts in the world'   
+                }, 
+                slide2: {
+                   image: '../assets/CardExpansions/BoraBora/2.jpg',
+                   description: 'Stay at some of the most scenic resorts in the world'   
+                }, 
+                slide3: {
+                   image: '../assets/CardExpansions/BoraBora/3.jpg',
+                   description: 'Stay at some of the most scenic resorts in the world'   
+                }, 
+                slide4: {
+                   image: '../assets/CardExpansions/BoraBora/4.jpg',
+                   description: 'Stay at some of the most scenic resorts in the world'   
+                }
+            }
         }
-        else if (this.getAttribute('slide') == 'slide2') {
-            this.cardImage.setAttribute('src', card.info[1].image);
-            this.cardText.innerHTML = card.info[1].description;
-        }
-        if (this.getAttribute('slide') == 'slide3') {
-            this.cardImage.setAttribute('src', card.info[2].image);
-            this.cardText.innerHTML = card.info[2].description;
-        }
-        if (this.getAttribute('slide') == 'slide4') {
-            this.cardImage.setAttribute('src', card.info[3].image);
-            this.cardText.innerHTML = card.info[3].description;
-        }
+        this.cardImage.setAttribute('src', card.info[this.getAttribute('slide')].image)
+        const text = card.info[this.getAttribute('slide')].description.split(' ');
+        this.cardText.innerHTML = '<span>' + text[0] + '</span>' + text.slice(1, ).join(' ');
         this.cardHeading.innerHTML = card.place;
         this.cardSubHeading.innerHTML = card.country;
     }
