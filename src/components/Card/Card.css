@@ -2,19 +2,33 @@
     width: 26vw;
     height: 33vw;
     border-radius: .5vw;
+    background-color: white;
     box-shadow: -4px 3px 20px #ccc; 
+    transition: transform 0.4s;
 }
 
+.cardContainer:hover {
+    transform: translate(0, -10px);
+}
+
+
 .image {
-    width: 26vw;
     height: 28vw;
-    border-top-left-radius: .9vw;
-    border-top-right-radius: .9vw;
+    width: auto;
+    object-fit: cover;
+}
+
+#imageDiv {
+    overflow: hidden;
+    width: 26vw;
+    height: 28vw;  
+    border-top-left-radius: .5vw;
+    border-top-right-radius: .5vw;    
 }
 
 .line {
     width: 26vw;
-    height: .2vw;
+    height: .1vw;
     background-color: #d0d0d0;
 }
 

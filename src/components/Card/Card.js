@@ -3,7 +3,7 @@ const templateCard = document.createElement('template');
 templateCard.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/Card/Card.css" />
 	<div class="cardContainer" id="cardContainer">
-        <div class="image" id="imageDiv">
+        <div class="imageDiv" id="imageDiv">
             <img class="image" id="image"></img>
         </div>
         <div class="line" id="line"></div>
@@ -18,6 +18,8 @@ class Card extends HTMLElement {
 	constructor() {
 		super();
 
+        this.onClick = this.onClick.bind(this);
+
     	this.attachShadow({ mode: 'open' });
     	this.shadowRoot.appendChild(templateCard.content.cloneNode(true));	
 
@@ -30,7 +32,16 @@ class Card extends HTMLElement {
 	connectedCallback() {
         this.image.setAttribute("src", this.getAttribute("imgSrc"));
     	this.cardHeading.innerHTML = this.getAttribute("heading"); 
-        this.cardSubHeading.innerHTML = this.getAttribute("subHeading");                  		
+        this.cardSubHeading.innerHTML = this.getAttribute("subHeading"); 
+        this.cardContainerDiv.addEventListener('click', this.onClick);                 		
+    }
+
+    disconnectedCallBack() {
+        this.cardContainerDiv.removeEventListener(this.onClick);
+    }
+
+    onClick() {
+            //route to /{this.heading} => w no spaces between words
     }
 }
 

@@ -1,5 +1,5 @@
 .grey {
-	clip-path: ellipse(120% 64% at 100% 22%);
+	clip-path: ellipse(120vw 30vw at 100vw 10vw);
 	position: fixed;
 	top: 0;
 	left: 0;
