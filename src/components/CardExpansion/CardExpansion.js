@@ -55,26 +55,20 @@ class CardExpansion extends HTMLElement {
         this.cardText.innerHTML = '<span>' + text[0] + '</span>' + text.slice(1, ).join(' ');
         this.cardHeading.innerHTML = card.place;
         this.cardSubHeading.innerHTML = card.country;
+        this.updateSlide(this.getAttribute('slide'));
     }
 
   	static get observedAttributes() {
-    	return ['text', 'type'];
+    	return ['slide'];
     }
 
-    get text() {
-        return this.getAttribute('text');
-    }    
-
-    get className() {
-        return this.getAttribute('type');
-    }  
-
-  	set text(newValue) {
-    	this.setAttribute('text', newValue);
- 	}
-
-    set className(newValue) {
-    	this.setAttribute('type', newValue);
+    attributeChangedCallback(name, oldValue, newValue) {
+        if(oldValue!=newValue)
+            this.updateSlide(newValue);
+    }
+    
+    updateSlide(value) {
+        this.setAttribute("slide",value);
     }
 
 }
