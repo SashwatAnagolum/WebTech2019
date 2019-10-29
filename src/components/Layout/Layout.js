@@ -3,7 +3,6 @@ const templateLayout = document.createElement('template');
 templateLayout.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/Layout/Layout.css" />
     <div class="layoutContainer" id="layoutContainer">
-        <nav-bar type1="" type2="" type3="" type4="" id="layoutNavBar"></nav-bar>
         <div>
             <slot name="innerLayout"></slot>
         </div>
@@ -20,10 +19,6 @@ class Layout extends HTMLElement {
     }
 
 	connectedCallback() { 
-        this.layoutNavBar.setAttribute('type1', this.getAttribute("type1"));
-        this.layoutNavBar.setAttribute('type2', this.getAttribute("type2"));
-        this.layoutNavBar.setAttribute('type3', this.getAttribute("type3"));
-        this.layoutNavBar.setAttribute('type4', this.getAttribute("type4")); 
     }
 
   	static get observedAttributes() {
