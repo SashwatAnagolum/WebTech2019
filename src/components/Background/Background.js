@@ -3,7 +3,7 @@ const templateBackground = document.createElement('template');
 templateBackground.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/Background/Background.css" />
 	<div class="grey"></div>	
-	<img src="G:/Web_Dev/WebTech2019/WebTech2019/assets/Background/beach.jpg" class="" id="image"></img>
+	<img src="C:/Users/drish/PES_UNI/Year_2/WebTech/WebTech2019/assets/Background/beach.jpg" class="" id="image"></img>
 	<div class="" id="blue"></div>
 `;
 

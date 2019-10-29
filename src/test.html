@@ -28,14 +28,24 @@
 			<form-input fieldType="text" fieldText="Email"></form-input> 
 			<drop-down fieldText="duration"></drop-down>
 			<card-expansion slide="slide1"></card-expansion>-->
-			<layout-render type1="whiteselected" type2="white" type3="white" type4="white">
+			<layout-render>
 				<p slot="innerLayout">
+					<back-ground id="bg" islanding="true"></back-ground>
 					<travel-card imgSrc="C:\Users\drish\PES_UNI\Year_2\WebTech\giphy.gif" heading="avocado" subHeading="bye"></travel-card>
 					<form-input fieldType="text" fieldText="Email"></form-input> 
+					<new-button id="changeBg" text="Create a trip" type="grey"></new-button>
 				</p>
 			</layout-render>
 		</div>
 	</div>
+	<script>
+		var buttonBg = document.getElementById('changeBg');
+		buttonBg.addEventListener("click", changeBackground, false);
+		function changeBackground(e) {
+			var bg = document.getElementById('bg');
+			bg.setAttribute("islanding",'false');
+		}
+	</script>
 	<script src="./components/Button/Button.js" type="text/javascript"></script>
 	<script src="./HOC/Mouse/Mouse.js" type="text/javascript"></script>	
 	<script src="./components/Card/Card.js" type="text/javascript"></script>
@@ -44,5 +54,6 @@
 	<script src="./components/DropDownField/DropDownField.js" type="text/javascript"></script>
 	<script src="./components/CardExpansion/CardExpansion.js" type="text/javascript"></script>
 	<script src="./components/Layout/Layout.js" type="text/javascript"></script>
+	<script src="./components/Background/Background.js" type="text/javascript"></script>
 </body>
 </html>
