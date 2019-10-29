@@ -1,9 +1,8 @@
 .navBarTop {
     width: 98vw;
-    height: 2.6vw;
     position: fixed;
     left: 2vw;
-    top: 1.5vw;
+    top: 0.5vw;
 }
 
 .navLogo {
@@ -14,41 +13,60 @@
 }
 
 .otherNav {
-    width: 0.7vw;
-    height: 7vw;
+    position: fixed;
+    top: 4vw;
+    left: 3vw;
+    display: flex;
+    flex-flow: column;
+}
+
+.navItem {
+    width: 10px;
+    height: 10px;  
+    box-sizing: border-box;
+    margin-bottom:25px;
+    transition: 0.3s;
+    border-radius: 50%;    
+}
+
+.black {
+    border: 1px solid black;
+}
+
+.black:hover {
+    transform: scale(1.2);
+    background-color: black;
+}
+
+.blackSelected {
+    background-color: black;
+    border: 1px solid black;    
+}
+
+.blackSelected:hover {
+    background-color: transparent;
 }
 
 .white {
-    width: .4vw;
-    height: .4vw;
-    border: 1px solid black;
-    border-radius: 100vw;
-    margin: 0.75vw;
-}
-
-.whiteselected {
-    width: .4vw;
-    height: .4vw;
-    border-radius: 100vw;
-    border: 1px solid black;
-    background-color: black;
-    margin: 0.75vw;
-}
-
-.blue {
-    width: .4vw;
-    height: .4vw;
-    border-color:transparent;
     border: 1px solid white;
-    border-radius: 100vw;
-    margin: 0.75vw;
 }
 
-.blueselected {
-    width: .4vw;
-    height: .4vw;
-    border: 1px solid white;
-    border-radius: 100vw;
-    background-color:white;
-    margin: 0.75vw;
+.white:hover {
+    transform: scale(1.2);
+    background-color: white;
+}
+
+.whiteSelected {
+    background-color: white;
+    border: 1px solid white;    
+}
+
+.whiteSelected:hover {
+    background-color: transparent;
+}
+
+.button {
+    position: relative;
+    left: 94vw;
+    top: 1.2vw;
 }
