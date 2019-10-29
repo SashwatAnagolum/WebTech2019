@@ -3,14 +3,18 @@ const templateNavBar = document.createElement('template');
 templateNavBar.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/NavBar/NavBar.css" />
 	<div class="navBarTop" id="NavBarTop">
-        <div class="navLogo" id="navLogo"></div>
-        <div class="otherNav" id="otherNav">
-            <div class="" id="circle1"></div>
-            <div class="" id="circle2"></div>
-            <div class="" id="circle3"></div>
-            <div class="" id="circle4"></div>
-        </div>
+        <div class="navLogo" id="navLogo">Tw</div>
+    </div> 
+    <div class="otherNav" id="otherNav">
+        <div class="" id="1"></div>
+        <div class="" id="2"></div>
+        <div class="" id="3"></div>
+        <div class="" id="4"></div>
+        <div class="hidden" id="5"></div>
     </div>
+    <div class="button">
+            <new-button type="navBar" text="Sign In"><new-button>
+    </div>      
 `;
 
 class NavBar extends HTMLElement {
@@ -20,19 +24,29 @@ class NavBar extends HTMLElement {
     	this.attachShadow({ mode: 'open' });
     	this.shadowRoot.appendChild(templateNavBar.content.cloneNode(true));	
 
-        this.navLogo = this.shadowRoot.getElementById('navLogo');
-        this.circle1 = this.shadowRoot.getElementById('circle1');
-        this.circle2 = this.shadowRoot.getElementById('circle2');
-        this.circle3 = this.shadowRoot.getElementById('circle3');
-        this.circle4 = this.shadowRoot.getElementById('circle4');
+        this.circle1 = this.shadowRoot.getElementById('1');
+        this.circle2 = this.shadowRoot.getElementById('2');
+        this.circle3 = this.shadowRoot.getElementById('3');
+        this.circle4 = this.shadowRoot.getElementById('4');
+        this.circle5 = this.shadowRoot.getElementById('5');
+        this.circles = [this.circle1, this.circle2, this.circle3, this.circle4];
 	}
 
 	connectedCallback() {
-        this.navLogo.innerHTML = "Tw"; 
-        this.circle1.setAttribute('class', this.getAttribute("type1"));
-        this.circle2.setAttribute('class', this.getAttribute("type2"));
-        this.circle3.setAttribute('class', this.getAttribute("type3"));
-        this.circle4.setAttribute('class', this.getAttribute("type4"));                		
+        let className = null;
+        for (var i in this.circles) {
+            console.log(i);
+            if (i + 1 == +this.getAttribute('selected')) {
+                console.log(this.circles[i]);
+                this.circles[i].setAttribute('class', this.getAttribute('theme') + ' ' + this.getAttribute('theme') + 'Selected' + ' navItem');
+            } else {
+                this.circles[i].setAttribute('class', this.getAttribute('theme') + ' navItem');               
+            }  
+        } 
+
+        if (this.getAttribute('loggedIn') == 'true') {
+            this.circle5.setAttribute('class', this.getAttribute('theme') + ' navItem');
+        }
     }
 
   	static get observedAttributes() {
