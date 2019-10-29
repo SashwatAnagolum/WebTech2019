@@ -37,7 +37,7 @@ class Button extends HTMLElement {
         return this.getAttribute('text');
     }    
 
-    get className() {
+    get type() {
         return this.getAttribute('type');
     }  
 
