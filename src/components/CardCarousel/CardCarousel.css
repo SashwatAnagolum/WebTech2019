@@ -1,0 +1,8 @@
+.carouselContainer {
+	width: 85%;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	flex-flow: row;
+	padding-top: 14vw;
+}

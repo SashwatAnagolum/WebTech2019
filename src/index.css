@@ -1,0 +1,15 @@
+.headingLanding {
+	color: white;
+	font-family: 'Bahnschrift Semibold';
+	font-size: 6.25vw;
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	flex-flow: row;
+	padding-top: 12vw;	
+}
+
+.subHeadingLanding {
+	color: white;
+}

@@ -8,7 +8,7 @@ templateCardExpansion.innerHTML = `
         <div class="callAction" id="callAction">
             <div class="cardHeading" id="cardHeading"></div>
             <div class="cardSubHeading" id="cardSubHeading"></div>
-            <new-button type="cardSlide" text="Add trip" class=newButton""></new-button>
+            <new-button type="cardSlide" text="Add trip" class="button"></new-button>
         </div>
         <div class="cardText"><p id="cardText"></p></div>
 	</div>
@@ -33,19 +33,19 @@ class CardExpansion extends HTMLElement {
             country: 'French Polynesia',
             info: {
                 slide1: {
-                   image: '../assets/CardExpansions/BoraBora/1.jpg',
+                   image: './assets/CardExpansions/BoraBora/1.jpg',
                    description: 'Stay at some of the most scenic resorts in the world'   
                 }, 
                 slide2: {
-                   image: '../assets/CardExpansions/BoraBora/2.jpg',
+                   image: './assets/CardExpansions/BoraBora/2.jpg',
                    description: 'Stay at some of the most scenic resorts in the world'   
                 }, 
                 slide3: {
-                   image: '../assets/CardExpansions/BoraBora/3.jpg',
+                   image: './assets/CardExpansions/BoraBora/3.jpg',
                    description: 'Stay at some of the most scenic resorts in the world'   
                 }, 
                 slide4: {
-                   image: '../assets/CardExpansions/BoraBora/4.jpg',
+                   image: './assets/CardExpansions/BoraBora/4.jpg',
                    description: 'Stay at some of the most scenic resorts in the world'   
                 }
             }

@@ -6,14 +6,14 @@ templateNavBar.innerHTML = `
         <div class="navLogo" id="navLogo">Tw</div>
     </div> 
     <div class="otherNav" id="otherNav">
-        <div class="" id="1"></div>
-        <div class="" id="2"></div>
-        <div class="" id="3"></div>
-        <div class="" id="4"></div>
-        <div class="hidden" id="5"></div>
+        <a href="/#" style="cursor: none"><div class="" id="1"></div></a>
+        <a href="#curated" style="cursor: none"><div class="" id="2"></div></a>
+        <a href="#details" style="cursor: none"><div class="" id="3"></div></a>
+        <a href="#design" style="cursor: none"><div class="" id="4"></div></a>
+        <a href="#relive" style="cursor: none"><div class="hidden" id="5"></div></a>
     </div>
     <div class="button">
-            <new-button type="navBar" text="Sign In"><new-button>
+            <new-button type="navBar" text="Sign In" id="btn"><new-button>
     </div>      
 `;
 
@@ -24,6 +24,7 @@ class NavBar extends HTMLElement {
     	this.attachShadow({ mode: 'open' });
     	this.shadowRoot.appendChild(templateNavBar.content.cloneNode(true));	
 
+        this.button = this.shadowRoot.getElementById('btn');
         this.circle1 = this.shadowRoot.getElementById('1');
         this.circle2 = this.shadowRoot.getElementById('2');
         this.circle3 = this.shadowRoot.getElementById('3');
@@ -44,6 +45,10 @@ class NavBar extends HTMLElement {
 
         if (this.getAttribute('loggedIn') == 'true') {
             this.circle5.setAttribute('class', this.getAttribute('theme') + ' navItem');
+        }
+
+        if (this.getAttribute('theme') == 'white') {
+            this.button.setAttribute('type', 'navBarWhite');
         }
     }
 
