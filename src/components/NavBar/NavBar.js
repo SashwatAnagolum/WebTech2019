@@ -36,7 +36,7 @@ class NavBar extends HTMLElement {
 	connectedCallback() {
         let className = null;
         for (var i in this.circles) {
-            if (i + 1 == +this.getAttribute('selected')) {
+            if (+i + 1 == +this.getAttribute('selected')) {
                 this.circles[i].setAttribute('class', this.getAttribute('theme') + ' ' + this.getAttribute('theme') + 'Selected' + ' navItem');
             } else {
                 this.circles[i].setAttribute('class', this.getAttribute('theme') + ' navItem');               

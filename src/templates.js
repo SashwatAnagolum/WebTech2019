@@ -3,7 +3,6 @@ const page = document.getElementById('page');
 window.addEventListener("hashchange", changeContent, false);
 
 function changeContent() {
-	console.log('hi!')
 	const route = window.location.href.split('#')[1];
 	page.innerHTML = setinnerContent(route);
 }
@@ -31,6 +30,14 @@ function setinnerContent(route) {
 			experience of a lifetime.
 			</p>
 			<new-button type="landing" text="Get started" class="callToAction"></new-button>
+		`
+	} else if (route == "curated") {
+		return `
+			<back-ground islanding="false"></back-ground>
+			<nav-bar theme="black" selected="2"></nav-bar>
+			<custom-mouse theme="black"></custom-mouse>	
+			<card-carousel slide="1"></card-carousel>
+			<card-slider></card-slider>		
 		`
 	}
 }
