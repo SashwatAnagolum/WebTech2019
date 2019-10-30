@@ -21,3 +21,26 @@
 	justify-content: space-around;
 	flex-flow: row;				
 }
+
+.normalHeading {
+	color: black;
+	font-size: 3.125vw;
+	font-family: "Bahnschrift Semibold";
+	width: 50vw;
+	text-align: center;
+	position: fixed;
+	top: 1vw;
+	left: 25vw;
+}
+
+.normalSubHeading {
+	color: #737373;
+	font-family: 'Roboto Slab';
+	font-weight: 300;
+	font-size: 1.2vw;
+	text-align: center;
+	width: 60vw;
+	top: 8vw;
+	left: 20vw;
+	position: fixed;
+}

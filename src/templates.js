@@ -38,6 +38,11 @@ function setinnerContent(route) {
 			<custom-mouse theme="black"></custom-mouse>	
 			<card-carousel slide="1"></card-carousel>
 			<card-slider></card-slider>		
+			<p class="normalHeading">Explore our curated experiences</p>
+			<p class="normalSubHeading">Choose from destinations that include Fiji, Crete, Bora Bora, and more - every location comes
+with an itinerary that allows you to make the most of your journey.</p>
 		`
+	} else if (route.split('&')[0] == "details") {
+						
 	}
 }

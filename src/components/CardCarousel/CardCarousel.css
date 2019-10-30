@@ -6,3 +6,9 @@
 	flex-flow: row;
 	padding-top: 14vw;
 }
+
+.carouselContainer a {
+	color: black;
+	text-decoration: none;
+	cursor: none;
+}

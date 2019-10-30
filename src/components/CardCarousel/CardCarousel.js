@@ -3,9 +3,15 @@
 templateCardCarousel.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/CardCarousel/CardCarousel.css" />
     <div class="carouselContainer">
-    	<travel-card imgSrc="" heading="" subHeading="" id="card1"></travel-card>
-    	<travel-card imgSrc="" heading="" subHeading="" id="card2"></travel-card> 
-    	<travel-card imgSrc="" heading="" subHeading="" id="card3"></travel-card>    		    	
+    	<a id="a1" href="">
+            <travel-card href="" imgSrc="" heading="" subHeading="" id="card1"></travel-card>
+        </a>
+    	<a id="a2" href="">
+            <travel-card href="" imgSrc="" heading="" subHeading="" id="card2"></travel-card>
+        </a> 
+    	<a id="a3" href="">
+            <travel-card href="" imgSrc="" heading="" subHeading="" id="card3"></travel-card>
+        </a>    		    	
     </div>
 `;
 
@@ -54,6 +60,11 @@ class CardCarousel extends HTMLElement {
         this.card2 = this.shadowRoot.getElementById('card2');
         this.card3 = this.shadowRoot.getElementById('card3');
 
+        this.a1 = this.shadowRoot.getElementById('a1');
+        this.a2 = this.shadowRoot.getElementById('a2');
+        this.a3 = this.shadowRoot.getElementById('a3'); 
+
+        this.links = [this.a1, this.a2, this.a3];
         this.cards = [this.card1, this.card2, this.card3];              
 	}	
 
@@ -74,9 +85,10 @@ class CardCarousel extends HTMLElement {
     changeSlides(value) {
         const slide = (+value - 1) * 3;
         for (var i = 0; i < 3; i ++) {
+            this.links[i].setAttribute('href', '#details&name=' + this.cardInfo[slide + i].imgSrc.split('/')[2].split('.')[0]);
             this.cards[i].setAttribute('imgSrc', this.cardInfo[slide + i].imgSrc);
             this.cards[i].setAttribute('heading', this.cardInfo[slide + i].heading);
-            this.cards[i].setAttribute('subHeading', this.cardInfo[slide + i].subHeading);            
+            this.cards[i].setAttribute('subHeading', this.cardInfo[slide + i].subHeading);           
         }
     }
 }
