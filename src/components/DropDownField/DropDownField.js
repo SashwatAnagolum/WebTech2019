@@ -26,12 +26,44 @@ class DropDownField extends HTMLElement {
 	connectedCallback() {
         this.field.innerHTML = this.getAttribute("fieldText"); 
         //get country list
-        const places = ['French Polynesia','Fiji','Greece','USA','Peru','Bangalore'];
-        for(var i in places) {
-            var place = document.createElement('option');
-            place.value = places[i];
-            place.appendChild(document.createTextNode(places[i]));
-            this.drop.appendChild(place);
+        if(this.getAttribute("fieldText") == "Location"){
+            const places = ['French Polynesia','Fiji','Greece','USA','Peru','Bangalore'];
+            for(var i in places) {
+                var place = document.createElement('option');
+                place.value = places[i];
+                place.appendChild(document.createTextNode(places[i]));
+                this.drop.appendChild(place);
+            }
+        }
+
+        if(this.getAttribute("fieldText") == "Duration"){
+            const duration = ['2 days', '3 days', '4 days', '5 days', '6 days', '1 week'];
+            for(var i in duration) {
+                var duration1 = document.createElement('option');
+                duration1.value = duration[i];
+                duration1.appendChild(document.createTextNode(duration[i]));
+                this.drop.appendChild(duration1);
+            }
+        }
+
+        if(this.getAttribute("fieldText") == "Theme"){
+            const theme = ['Sightseeing','Backpacking','Leisure'];
+            for(var i in theme) {
+                var theme1 = document.createElement('option');
+                theme1.value = theme[i];
+                theme1.appendChild(document.createTextNode(theme[i]));
+                this.drop.appendChild(theme1);
+            }
+        }
+
+        if(this.getAttribute("fieldText") == "Biome"){
+            const biome = ['Beach','Jungle','Desert'];
+            for(var i in biome) {
+                var biome1 = document.createElement('option');
+                biome1.value = biome[i];
+                biome1.appendChild(document.createTextNode(biome[i]));
+                this.drop.appendChild(biome1);
+            }
         }
     }
 

@@ -50,7 +50,7 @@ class CardExpansion extends HTMLElement {
                 }
             }
         }
-        this.cardImage.setAttribute('src', card.info[this.getAttribute('slide')].image)
+        this.cardImage.setAttribute('src', card.info[this.getAttribute('slide')].image);
         const text = card.info[this.getAttribute('slide')].description.split(' ');
         this.cardText.innerHTML = '<span>' + text[0] + '</span>' + text.slice(1, ).join(' ');
         this.cardHeading.innerHTML = card.place;
