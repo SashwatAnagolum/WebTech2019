@@ -21,7 +21,7 @@ class Button extends HTMLElement {
 	connectedCallback() {
     	this.innerDiv.innerHTML = this.getAttribute("text"); 
 
-        if (this.getAttribute('type') != 'navBar' && this.getAttribute('type') != 'navBarWhite') {
+        if ((this.getAttribute('type') != 'navBar') && (this.getAttribute('type') != 'navBarWhite')) {
             this.outerDiv.setAttribute('class', this.getAttribute("type") + ' regular');             
         } else {
             this.outerDiv.setAttribute('class', this.getAttribute('type')); 

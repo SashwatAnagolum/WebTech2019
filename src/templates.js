@@ -11,6 +11,17 @@ function changeContent() {
 function setinnerContent(route) {
 	if (!route) {
 		return `
+			<style>
+				.callToAction {
+					width: 100%;
+					margin: auto;
+					display: flex;
+					justify-content: space-around;
+					flex-flow: row;	
+					padding-top: 2vw;				
+				}
+			</style>
+
 			<back-ground islanding="true"></back-ground>
 			<nav-bar theme="white" selected="1"></nav-bar>
 			<custom-mouse theme="white"></custom-mouse>
@@ -19,6 +30,7 @@ function setinnerContent(route) {
 				See why hundreds of millennials choose TravelWorks to create the
 			experience of a lifetime.
 			</p>
+			<new-button type="landing" text="Get started" class="callToAction"></new-button>
 		`
 	}
 }

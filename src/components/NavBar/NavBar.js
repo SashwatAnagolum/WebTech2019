@@ -49,6 +49,8 @@ class NavBar extends HTMLElement {
 
         if (this.getAttribute('theme') == 'white') {
             this.button.setAttribute('type', 'navBarWhite');
+        } else {
+            this.button.setAttribute('type', 'navBar');            
         }
     }
 

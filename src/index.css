@@ -7,9 +7,17 @@
 	display: flex;
 	justify-content: space-around;
 	flex-flow: row;
-	padding-top: 12vw;	
+	padding-top: 20vw;	
 }
 
 .subHeadingLanding {
 	color: white;
+	font-family: 'Roboto Slab';
+	font-weight: 300;
+	font-size: 1.2vw;
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	flex-flow: row;				
 }
