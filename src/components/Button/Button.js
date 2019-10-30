@@ -2,9 +2,11 @@ const templateButton = document.createElement('template');
 
 templateButton.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/Button/Button.css" />
-	<div class="" id="outer">
+	<a href="" id="link" style="cursor:none; text-decoration: none">
+    <div class="" id="outer">
 		<div class="" id="inner"></div>
 	</div>
+    </a>
 `;
 
 class Button extends HTMLElement {
@@ -14,6 +16,7 @@ class Button extends HTMLElement {
     	this.attachShadow({ mode: 'open' });
     	this.shadowRoot.appendChild(templateButton.content.cloneNode(true));	
 
+        this.link = this.shadowRoot.getElementById('link');
     	this.outerDiv = this.shadowRoot.getElementById('outer');
     	this.innerDiv = this.shadowRoot.getElementById('inner');
 	}
@@ -26,7 +29,8 @@ class Button extends HTMLElement {
         } else {
             this.outerDiv.setAttribute('class', this.getAttribute('type')); 
         }
-        this.innerDiv.setAttribute('class', this.getAttribute("type") + 'Inner');                    		
+        this.innerDiv.setAttribute('class', this.getAttribute("type") + 'Inner'); 
+        this.link.setAttribute('href', this.getAttribute("outlink"));                   		
     }
 
   	static get observedAttributes() {
