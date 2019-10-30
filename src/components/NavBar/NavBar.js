@@ -7,13 +7,13 @@ templateNavBar.innerHTML = `
     </div> 
     <div class="otherNav" id="otherNav">
         <a href="/#" style="cursor: none"><div class="" id="1"></div></a>
-        <a href="#curated" style="cursor: none"><div class="" id="2"></div></a>
+        <a href="#curated&slide=0" style="cursor: none"><div class="" id="2"></div></a>
         <a href="#details" style="cursor: none"><div class="" id="3"></div></a>
         <a href="#design" style="cursor: none"><div class="" id="4"></div></a>
         <a href="#relive" style="cursor: none"><div class="hidden" id="5"></div></a>
     </div>
     <div class="button">
-            <new-button type="navBar" text="Sign In" id="btn"><new-button>
+            <new-button type="navBar" text="Sign In" id="btn" outlink=""><new-button>
     </div>      
 `;
 
