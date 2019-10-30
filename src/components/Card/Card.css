@@ -33,15 +33,17 @@
 }
 
 .cardHeading {
-    font-size: 2vw;
+    font-size: 1.75vw;
     text-align: center;
     font-family: 'Roboto Slab';
+    font-weight: 300;
 }
 
 .cardSubHeading {
-    font-size: 1.5vw;
+    font-size: 1vw;
     color: #737377;
     text-align: center;
     font-family: 'Roboto Slab';
+    font-weight: 300;
 }
 

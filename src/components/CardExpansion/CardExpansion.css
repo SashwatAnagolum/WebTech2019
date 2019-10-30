@@ -27,6 +27,9 @@
     position: absolute;
     top: 11.19vw;
     left: 7.6vw;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
 }
 
 .cardHeading {
@@ -37,8 +40,10 @@
 
 .cardSubHeading {
     font-family: 'Roboto Slab';
+    font-weight: 300;
     font-size: 1.45vw;
-    text-align: center;
+    text-align: left;
+    margin-left: 0.15vw;
     color: #bcbcbc;
 }
 
@@ -63,5 +68,11 @@ span {
     background-color: transparent;
     color: #f6f6f6;
     font-size: 2.5vw;
+}
+
+.button {
+    position: fixed;
+    top: 17.5vw;
+    margin-left: 0.15vw;
 }
 

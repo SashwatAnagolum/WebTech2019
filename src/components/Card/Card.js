@@ -30,9 +30,7 @@ class Card extends HTMLElement {
 	}
 
 	connectedCallback() {
-        this.image.setAttribute("src", this.getAttribute("imgSrc"));
-    	this.cardHeading.innerHTML = this.getAttribute("heading"); 
-        this.cardSubHeading.innerHTML = this.getAttribute("subHeading"); 
+        this.updateContent();   
         this.cardContainerDiv.addEventListener('click', this.onClick);                 		
     }
 
@@ -40,8 +38,24 @@ class Card extends HTMLElement {
         this.cardContainerDiv.removeEventListener(this.onClick);
     }
 
+    static get observedAttributes() {
+        return ['imgSrc', 'heading', 'subheading'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue != newValue) {
+            this.updateContent(name, newValue)
+        }
+    }
+
     onClick() {
             //route to /{this.heading} => w no spaces between words
+    }
+
+    updateContent(name, value) {
+        this.image.setAttribute("src", this.getAttribute("imgSrc")); 
+        this.cardHeading.innerHTML = this.getAttribute("heading");
+        this.cardSubHeading.innerHTML = this.getAttribute("subHeading");                            
     }
 }
 
