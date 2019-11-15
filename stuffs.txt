@@ -4,27 +4,31 @@ Structure:
 ---
 • App
 	• Layout
-		• Background
-		• Logo and Sign Up / Login button
-		• NavBar
+		• Background 
+		• Logo and Sign Up / Login button 
+		• NavBar 
 		• Content
 			*conditionally rendered stuffs*
 
 TODO:
 ---
-• Components to create - Drishti and Bhavana
-	• Background - Drishti
-	• Button - Drishti
-	• NavBar - Drishti
-	• Card - Drishti
-	• Slider - Drishti
-	• CardExpansion - Bhavana
-	• CardExpansionSlide - Bhavana
-	• FormField - Bhavana
-	• FormDropdownField - Bhavana
-	• Layout - Sashwat
-	• App - Sashwat	
+• Components to create - Drishti and Sashwat
+	• Background - Drishti ✓
+	• Button - Sashwat ✓
+	• NavBar - Drishti ✓
+	• Card - Sashwat ✓
+	• Slider - Sashwat ✗ -> Needs to be completed
+	• CardExpansion - Drishti ✓
+	• CardExpansionSlide - Drishti ✓
+	• FormField - Drishti ✓
+	• FormDropdownField - Drishti ✓
+	• Layout - Sashwat ✓ 
+	• App - Sashwat	✓
 
-• Design screens for mobile - Sashwat
+• Finish the login, sign up screens and associated routing - Bhavana
+	• Use the XD file to figure out the styling and content for each 
+	  of the screens	
 
-• Develop DB object model, post / get logic - Sashwat
+• Develop DB model - Sashwat
+
+• Write post / get logic using XMLHttpRequest objects - Bhavana
