@@ -114,9 +114,49 @@ function setinnerContent(route) {
 		<form-input type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
 		<form-input type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
 		<new-button type="grey" text="Log in" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 35.5vw;"></new-button>
-		<p class="signup">Not a member?</p><a href="" class="signUpLink">Sign up here</a>
+		<p class="signup">Not a member?</p><a href="#signUp" class="signUpLink">Sign up here</a>
+		`
+	} else if (route == 'signUp') {
+		return `
+		<style>
+		.heading {
+			font-family: 'Bahnschrift';
+			font-size: 3.1vw;
+			position: absolute;
+			top: 3.9vw;
+			left: 41vw;
+		}
+		.member {
+			font-family:'Roboto Slab'; 
+			font-size: 1vw; 
+			text-align: center;
+			position: absolute;
+			top: 39.5vw;
+			left: 44.5vw;
+		}
+		.signUpLink {
+			z-index: -1;
+			height: 2vw;
+			width: 7vw;
+			font-family:'Roboto Slab'; 
+			font-size: 1vw; 
+			text-align: center;
+			position: absolute;
+			top: 40.5vw;
+			left: 52vw;
+			background-color: transparent;
+			font-color: black;
+		}
+		</style>
+		<back-ground islanding="false"></back-ground>
+		<nav-bar theme="black" selected=""></nav-bar>
+		<custom-mouse theme="black"></custom-mouse>
+		<p class="heading">Join the club</p>
+		<form-input type="text" name="Email" style="position: fixed; left: 41vw; top: 14vw;"></form-input>
+		<form-input type="password" name="Create password" style="position: fixed; left: 41vw; top: 21vw;"></form-input>
+		<form-input type="password" name="Confirm password" style="position: fixed; left: 41vw; top: 28vw;"></form-input>
+		<new-button type="grey" text="Sign up" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 37vw;"></new-button>
+		<p class="member">Already a member? </p><a href="#login" class="signUpLink">Log in</a>
 		`
 	}
-
-
 }
