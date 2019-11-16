@@ -34,23 +34,23 @@ class Button extends HTMLElement {
     }
 
   	static get observedAttributes() {
-    	return ['text', 'type'];
+    	return ['text', 'type', 'outlink'];
     }
 
-    get text() {
-        return this.getAttribute('text');
-    }    
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue != newValue) {
+            this.change(name, newValue);
+        }
+    }
 
-    get type() {
-        return this.getAttribute('type');
-    }  
-
-  	set text(newValue) {
-    	this.setAttribute('text', newValue);
- 	}
-
-    set className(newValue) {
-    	this.setAttribute('type', newValue);
+    change(name, value) {
+        this.setAttribute(name, value);
+        if (name == 'text') {
+            this.innerDiv.innerHTML = value;
+        }
+        if (name == 'outlink') {
+            this.link.setAttribute('href', value);
+        }
     }
 
 }

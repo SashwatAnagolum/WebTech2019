@@ -29,23 +29,25 @@ class FormInput extends HTMLElement {
     }
 
   	static get observedAttributes() {
-    	return ['text', 'type'];
+    	return ['text', 'type', 'name', 'placeholder'];
     }
 
-    get text() {
-        return this.getAttribute('text');
-    }    
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue != newValue) {
+            this.change(name, newValue);
+        }
+    }
 
-    get className() {
-        return this.getAttribute('type');
-    }  
-
-  	set innerText(newValue) {
-    	this.setAttribute('text', newValue);
- 	}
-
-    set className(newValue) {
-    	this.setAttribute('type', newValue);
+    change(name, value) {
+        this.setAttribute(name, value);
+        if (name == 'type') {
+            this.inputField.setAttribute('type', value);
+        }
+        if (name == 'name') {
+            this.field.innerHTML = value;
+            this.inputField.setAttribute('name', value);
+            this.inputField.setAttribute('placeholder', value);
+        }
     }
 
 }

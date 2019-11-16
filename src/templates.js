@@ -22,7 +22,7 @@ function setinnerContent(route) {
 			</style>
 
 			<back-ground islanding="true"></back-ground>
-			<nav-bar theme="white" selected="1"></nav-bar>
+			<nav-bar theme="white" selected="1" text="Sign in" outlink="#login"></nav-bar>
 			<custom-mouse theme="white"></custom-mouse>
 			<p class="headingLanding">Dreams do come true</p>
 			<p class="subHeadingLanding">
@@ -74,6 +74,47 @@ function setinnerContent(route) {
 			<drop-down fieldText="Location" style="position: fixed; left: 30vw; top: 18vw;"></drop-down>
 			<drop-down fieldText="Theme" style="position: fixed; left: 50vw; top: 25vw;"></drop-down>
 			<drop-down fieldText="Biome" style="position: fixed; left: 30vw; top: 25vw;"></drop-down>
+		`
+	} else if (route == "login") {
+		return `
+		<style>
+		.heading {
+			font-family: 'Bahnschrift';
+			font-size: 3.1vw;
+			position: absolute;
+			top: 3.9vw;
+			left: 40vw;
+		}
+		.signup {
+			font-family:'Roboto Slab'; 
+			font-size: 1vw; 
+			text-align: center;
+			position: absolute;
+			top: 38vw;
+			left: 44vw;
+		}
+		.signUpLink {
+			z-index: -1;
+			height: 2vw;
+			width: 7vw;
+			font-family:'Roboto Slab'; 
+			font-size: 1vw; 
+			text-align: center;
+			position: absolute;
+			top: 39vw;
+			left: 51vw;
+			background-color: transparent;
+			font-color: black;
+		}
+		</style>
+		<back-ground islanding="false"></back-ground>
+		<nav-bar theme="black" selected=""></nav-bar>
+		<custom-mouse theme="black"></custom-mouse>
+		<p class="heading">Welcome back</p>
+		<form-input type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
+		<form-input type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
+		<new-button type="grey" text="Log in" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 35.5vw;"></new-button>
+		<p class="signup">Not a member?</p><a href="" class="signUpLink">Sign up here</a>
 		`
 	}
 

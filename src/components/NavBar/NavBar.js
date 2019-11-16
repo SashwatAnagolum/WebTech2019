@@ -13,7 +13,7 @@ templateNavBar.innerHTML = `
         <a href="#relive" style="cursor: none"><div class="hidden" id="5"></div></a>
     </div>
     <div class="button">
-            <new-button type="navBar" text="Sign In" id="btn" outlink=""><new-button>
+            <new-button id="buttonNav" type="navBar" text="" outlink=""><new-button>
     </div>      
 `;
 
@@ -24,13 +24,13 @@ class NavBar extends HTMLElement {
     	this.attachShadow({ mode: 'open' });
     	this.shadowRoot.appendChild(templateNavBar.content.cloneNode(true));	
 
-        this.button = this.shadowRoot.getElementById('btn');
         this.circle1 = this.shadowRoot.getElementById('1');
         this.circle2 = this.shadowRoot.getElementById('2');
         this.circle3 = this.shadowRoot.getElementById('3');
         this.circle4 = this.shadowRoot.getElementById('4');
         this.circle5 = this.shadowRoot.getElementById('5');
         this.circles = [this.circle1, this.circle2, this.circle3, this.circle4];
+        this.button = this.shadowRoot.getElementById('buttonNav');
 	}
 
 	connectedCallback() {
@@ -52,26 +52,12 @@ class NavBar extends HTMLElement {
         } else {
             this.button.setAttribute('type', 'navBar');            
         }
+        this.button.setAttribute("text",this.getAttribute("text"));
+        this.button.setAttribute('outlink',this.getAttribute('outlink'));
     }
 
   	static get observedAttributes() {
-    	return ['text', 'type'];
-    }
-
-    get text() {
-        return this.getAttribute('text');
-    }    
-
-    get className() {
-        return this.getAttribute('type');
-    }  
-
-  	set innerText(newValue) {
-    	this.setAttribute('text', newValue);
- 	}
-
-    set className(newValue) {
-    	this.setAttribute('type', newValue);
+    	return ['text', 'type', 'outlink'];
     }
 
 }
