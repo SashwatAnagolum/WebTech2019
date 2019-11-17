@@ -78,6 +78,7 @@ function setinnerContent(route) {
 	} else if (route == "login") {
 		return `
 		<style>
+		
 		.heading {
 			font-family: 'Bahnschrift';
 			font-size: 3.1vw;
