@@ -2,8 +2,9 @@ const templateBackground = document.createElement('template');
 
 templateBackground.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/Background/Background.css" />
+	<div class="white"></div>
 	<div class="grey"></div>	
-	<img src="./assets/Background/beach.jpg" class="" id="image"></img>
+	<img src="./assets/Background/beach.jpg" class="hidden" id="image"></img>
 	<div class="" id="blue"></div>
 `;
 
@@ -19,13 +20,13 @@ class Background extends HTMLElement {
     	this.blueDiv = this.shadowRoot.getElementById('blue');
 	}
 
-  	static get observedAttributes() {
-    	return ['islanding'];
-    }
+  static get observedAttributes() {
+    return ['islanding'];
+  }
 
-    connectedCallback() {
-    	this.updateStyling(this.getAttribute('islanding'));
-    }
+  connectedCallback() {
+   	this.updateStyling(this.getAttribute('islanding'));
+  }
 
 	attributeChangedCallback(name, oldValue, newValue) {
 		this.updateStyling(newValue);
@@ -33,9 +34,11 @@ class Background extends HTMLElement {
 
 	updateStyling(value) {
 		if (value == 'false') {
-			this.image.setAttribute('class', 'hidden');
+			this.image.setAttribute('src', '');
+			this.image.setAttribute('class', 'hidden')
 			this.blueDiv.setAttribute('class', 'hiddenBlue');			
 		} else if (value == 'true') {
+			this.image.setAttribute('src', './assets/Background/beach.jpg');
 			this.image.setAttribute('class', 'visible');
 			this.blueDiv.setAttribute('class', 'visibleBlue');			
 		}

@@ -45,3 +45,13 @@ img {
 .visible {
 	opacity: 1;
 }
+
+.white {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	z-index: -950;
+}

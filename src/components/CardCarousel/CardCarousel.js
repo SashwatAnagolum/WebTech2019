@@ -1,8 +1,8 @@
-    const templateCardCarousel = document.createElement('template');
+const templateCardCarousel = document.createElement('template');
 
 templateCardCarousel.innerHTML = `
     <link rel="stylesheet" type="text/css" href="./components/CardCarousel/CardCarousel.css" />
-    <div class="carouselContainer">
+    <div class="carouselContainer" id="carouselContainer">
     	<a id="a1" href="">
             <travel-card href="" imgSrc="" heading="" subHeading="" id="card1"></travel-card>
         </a>
@@ -80,6 +80,8 @@ class CardCarousel extends HTMLElement {
 
 	connectedCallback() {
 		this.changeSlides(this.getAttribute('slide'));
+
+        this.carouselContainer.addEventListener("hashchange", this.hashChangeHandler);
 	}
 
     changeSlides(value) {
@@ -90,6 +92,10 @@ class CardCarousel extends HTMLElement {
             this.cards[i].setAttribute('heading', this.cardInfo[slide + i].heading);
             this.cards[i].setAttribute('subHeading', this.cardInfo[slide + i].subHeading);           
         }
+    }
+
+    hashChangeHandler(oldUrl, newUrl) {
+        console.log(oldUrl, newUrl)
     }
 }
 

@@ -33,14 +33,18 @@ class Mouse extends HTMLElement {
 		this.initCursorSmall();	
 		this.initCursorBig();
 
+		this.changeStyling();
+	}	
+
+	changeStyling() {
 		this.shadowRoot.getElementById('cursorSmall').
 			setAttribute('class', 'cursor cursorSmall ' + 
 			this.getAttribute('theme') + 'Small');
 
 		this.shadowRoot.getElementById('cursorBig').
 			setAttribute('class', 'cursor cursorBig ' + 
-			this.getAttribute('theme') + 'Big');
-	}	
+			this.getAttribute('theme') + 'Big');		
+	}
 
 	initCursorSmall() {
 		const smallCursor = this.shadowRoot.getElementById('cursorSmall');
@@ -64,6 +68,17 @@ class Mouse extends HTMLElement {
 		requestAnimationFrame(render);
 
 	}	
+
+  static get observedAttributes() {
+    return ['theme'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+  	if (oldValue != newValue){
+  		this.setAttribute("theme", newValue);
+  		this.changeStyling();
+  	}
+  }
 }
 
 window.customElements.define('custom-mouse', Mouse); 

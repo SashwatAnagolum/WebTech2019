@@ -28,6 +28,37 @@ class Slider extends HTMLElement {
     	this.left = this.shadowRoot.getElementById('left');
     	this.right = this.shadowRoot.getElementById('right');    			
 	}
+
+	connectedCallback() {
+		this.left.addEventListener("click", this.changeSlide);
+		this.right.addEventListener("click", this.changeSlide);
+	}
+
+	changeSlide = (e) => {
+		if (e.target.getAttribute('id') == 'left') {
+			this.setAttribute("slidenum", Math.abs(+this.getAttribute('slideNum') - 1)% 
+				+(this.getAttribute('numSlides')));
+		} else {
+			this.setAttribute("slidenum", Math.abs(+this.getAttribute('slideNum') + 1)% 
+				+(this.getAttribute('numSlides')));
+		}
+	}
+
+	static getObservedAttributes() {
+		return ['slidenum']
+	}
+
+	// attributeChangedCallback(name, oldValue, newValue) {
+	// 	if (oldValue != newValue) {
+	// 		if (window.location.hash.split(&)[0] == "curated") {
+	// 			window.location.href = "#curated&slide=" + newValue;
+	// 		} else if (window.location.hash.split(&)[0] == "details") {
+	// 			continue;
+	// 		} else if (window.location.hash.split(&)[0] == "relive") {
+	// 			continue;
+	// 		}
+	// 	}
+	// }
 }
 
 window.customElements.define('card-slider', Slider); 

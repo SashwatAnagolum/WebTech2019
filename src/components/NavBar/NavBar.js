@@ -6,11 +6,11 @@ templateNavBar.innerHTML = `
         <div class="navLogo" id="navLogo">Tw</div>
     </div> 
     <div class="otherNav" id="otherNav">
-        <a href="/#" style="cursor: none"><div class="" id="1"></div></a>
-        <a href="#curated" style="cursor: none"><div class="" id="2"></div></a>
-        <a href="#details" style="cursor: none"><div class="" id="3"></div></a>
-        <a href="#design" style="cursor: none"><div class="" id="4"></div></a>
-        <a href="#relive" style="cursor: none"><div class="hidden" id="5"></div></a>
+        <a href="#" style="cursor:none"><div class="" id="1"></div></a>
+        <a href="#curated" style="cursor:none"><div class="" id="2"></div></a>
+        <a href="#details" style="cursor:none"><div class="" id="3"></div></a>
+        <a href="#design" style="cursor:none"><div class="" id="4"></div></a>
+        <a href="#relive" style="cursor:none"><div class="hidden" id="5"></div></a>
     </div>
     <div class="button">
             <new-button id="buttonNav" type="navBar" text="" outlink=""><new-button>
@@ -40,7 +40,7 @@ class NavBar extends HTMLElement {
                 this.circles[i].setAttribute('class', this.getAttribute('theme') + ' ' + this.getAttribute('theme') + 'Selected' + ' navItem');
             } else {
                 this.circles[i].setAttribute('class', this.getAttribute('theme') + ' navItem');               
-            }  
+            }
         } 
 
         if (this.getAttribute('loggedIn') == 'true') {
@@ -52,9 +52,13 @@ class NavBar extends HTMLElement {
         } else {
             this.button.setAttribute('type', 'navBar');            
         }
+
         this.button.setAttribute("text",this.getAttribute("text"));
-        this.button.setAttribute('outlink',this.getAttribute('outlink'));
+        this.button.setAttribute("outlink",this.getAttribute('outlink')); 
     }
+
+    // changeUrl(e) {
+    // }
 
   	static get observedAttributes() {
     	return ['text', 'type', 'outlink'];
