@@ -124,7 +124,7 @@ function setinnerContent(route) {
 			font-size: 3.1vw;
 			position: absolute;
 			top: 3.9vw;
-			left: 41vw;
+			left: 41vw; 
 		}
 		.member {
 			font-family:'Roboto Slab'; 
@@ -157,6 +157,16 @@ function setinnerContent(route) {
 		<form-input type="password" name="Confirm password" style="position: fixed; left: 41vw; top: 28vw;"></form-input>
 		<new-button type="grey" text="Sign up" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 37vw;"></new-button>
 		<p class="member">Already a member? </p><a href="#login" class="signUpLink">Log in</a>
+		`
+	} else if (route == 'relive') {
+		return `
+		<back-ground islanding="false"></back-ground>
+		<nav-bar theme="black" selected="2" text="Sign out"></nav-bar>
+		<custom-mouse theme="black"></custom-mouse>	
+		<card-carousel slide="1"></card-carousel>
+		<card-slider></card-slider>	
+		<p class="normalHeading">Relive your favourite memories</p>
+		<p class="normalSubHeading">Look at the trips you've saved to your collection.</p>
 		`
 	}
 }
