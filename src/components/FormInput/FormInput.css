@@ -32,3 +32,7 @@
     padding: 5%;
     line-height: 1vw;
 }
+
+input {
+    cursor: none;
+}
