@@ -32,3 +32,48 @@ TODO:
 • Develop DB model - Sashwat
 
 • Write post / get logic using XMLHttpRequest objects - Bhavana
+
+DB Model:
+-----------------------------------------------------------------------------
+wt2019-db
+	• login:
+		• user1:
+			password: user1Password
+		• user2
+		• user3
+			⋮
+		• user n	
+	• places:
+		• country1:
+			• destination1:
+				• biome: biomeName
+				• itineraryItem1:
+					• pictureData: picDataBlob
+					• theme: themeName
+					• text: itineraryText
+					• time: timeForItinerary
+					• nearby:
+						• link: pathToNearestItineraryItem
+				• itineraryItem2
+				• itineraryItem3
+				• itineraryItem4				
+			• destination2
+				⋮
+			• destination n
+		• country2
+		• country3
+		• country4
+			⋮
+		• country n
+	• savedData:
+		• user1:
+			• trip1:
+				• destination: pathToDestination
+				• itineraryItems: arrayofSubPathsFromDestination
+			• trip2
+				⋮
+			• trip n
+		• user2
+		• user3
+			⋮
+		• user n
