@@ -1,0 +1,25 @@
+.outer {
+    width: 30vw;
+    height: 3.5vw;
+    border-radius: 0.7vw;
+    background-color: #ffffff;
+    border: #d0d0d0;
+}
+
+#line1 {
+    font-family: 'Roboto Slab';
+    font-size: 1vw;
+    align-items: center;
+    text-align-last: center;
+    padding-top: 0.2vw;
+    color: #737373;
+}
+
+#line2 {
+    font-family: 'Roboto Slab';
+    font-size: 1vw;
+    align-items: center;
+    text-align-last: center;
+    padding-bottom: 0.2vw;
+    color: #737373;
+}
