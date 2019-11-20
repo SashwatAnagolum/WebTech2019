@@ -35,23 +35,23 @@ class CardExpansion extends HTMLElement {
                    description: 'Stay at some of the most scenic resorts in the world'   
                 }, 
                 slide2: {
-                   image: './assets/CardExpansions/BoraBora/2.jpg',
-                   description: 'Stay at some of the most scenic resorts in the world'   
+                   image: './assets/CardExpansions/BoraBora/2.png',
+                   description: 'Snorkel amongst the fish in sand bottomed lagoons'   
                 }, 
                 slide3: {
-                   image: './assets/CardExpansions/BoraBora/3.jpg',
-                   description: 'Stay at some of the most scenic resorts in the world'   
+                   image: './assets/CardExpansions/BoraBora/3.png',
+                   description: 'Watch Polynesian dancers perform the traditional Tahitian fire dance'   
                 }, 
                 slide4: {
-                   image: './assets/CardExpansions/BoraBora/4.jpg',
-                   description: 'Stay at some of the most scenic resorts in the world'   
+                   image: './assets/CardExpansions/BoraBora/4.png',
+                   description: 'Sail at sunset as the lagoon turns magenta and the sky fades into a magical dusk'   
                 }
             }
         }        
     }
 
 	connectedCallback() {  
-        this.updateSlide()
+        this.updateSlide(this.getAttribute('slide'))
     }
 
   	static get observedAttributes() {
@@ -59,14 +59,12 @@ class CardExpansion extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(oldValue!=newValue && oldValue)
-            console.log(newValue);
+        if(oldValue!=newValue)
             this.updateSlide(newValue);
     }
     
     updateSlide(value) {
         this.cardImage.setAttribute('src', this.card.info['slide' + value].image);
-        console.log('slide' + value);
         const text = this.card.info['slide' + value].description.split(' ');
         this.cardText.innerHTML = '<span>' + text[0] + '</span>' + text.slice(1, ).join(' ');
         this.cardHeading.innerHTML = this.card.place;

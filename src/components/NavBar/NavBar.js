@@ -44,7 +44,7 @@ class NavBar extends HTMLElement {
         } 
 
         if (this.getAttribute('loggedIn') == 'true') {
-            this.circle5.setAttribute('class', this.getAttribute('theme') + ' navItem');
+            this.circle5.setAttribute('class', 'navItem ' + this.getAttribute('theme'));
         }
 
         if (this.getAttribute('theme') == 'white') {
@@ -53,7 +53,12 @@ class NavBar extends HTMLElement {
             this.button.setAttribute('type', 'navBar');            
         }
 
+        if (+this.getAttribute('selected') == 5) {
+            this.circle5.setAttribute('class', this.circle5.getAttribute('class') + ' ' + this.getAttribute('theme') + 'Selected')
+        }        
+
         this.button.setAttribute("text",this.getAttribute("text"));
+        console.log(this.getAttribute('loggedIn'))
         this.button.setAttribute("outlink",this.getAttribute('outlink')); 
     }
 

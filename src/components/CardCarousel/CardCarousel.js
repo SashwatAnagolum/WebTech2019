@@ -21,34 +21,34 @@ class CardCarousel extends HTMLElement {
 
         this.cardInfo = [
             {
-                imgSrc: './assets/BoraBora.jpg',
+                imgSrc: './assets/cards/BoraBora.jpg',
                 heading: 'Bora Bora',
                 subHeading: 'French Polynesia'
             },
             {
-                imgSrc: './assets/SanFrancisco.jpg',
-                heading: 'San Francisco',
-                subHeading: 'CA, USA'
+                imgSrc: './assets/cards/xian.jpg',
+                heading: 'Xian',
+                subHeading: 'China'
             },             
             {
-                imgSrc: './assets/CancunMexico.jpeg',
+                imgSrc: './assets/cards/Cancun.jpeg',
                 heading: 'Cancun',
                 subHeading: 'Mexico'
             },           
             {
-                imgSrc: '../assets/LaucalaFiji.jpg',
-                heading: 'Laucala',
-                subHeading: 'Fiji'
+                imgSrc: '../assets/cards/nice.jpg',
+                heading: 'Nice',
+                subHeading: 'France'
             },
             {
-                imgSrc: './assets/CreteGreece.jpg',
-                heading: 'Crete',
-                subHeading: 'Greece'
+                imgSrc: './assets/cards/tahiti.jpg',
+                heading: 'Tahiti',
+                subHeading: 'French Polynesia'
             },
             {
-                imgSrc: './assets/MachuPicchu.jpg',
-                heading: 'Machu Picchu',
-                subHeading: 'Peru'                
+                imgSrc: './assets/cards/berlin.jpg',
+                heading: 'Berlin',
+                subHeading: 'Germany'                
             }
         ]
 
@@ -73,7 +73,6 @@ class CardCarousel extends HTMLElement {
     }    
 
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log("oldValue: ", oldValue, "New value: ", newValue)
         if (oldValue != newValue) {
             this.changeSlides(newValue);
         }
@@ -81,13 +80,18 @@ class CardCarousel extends HTMLElement {
 
 	connectedCallback() {
 		this.changeSlides(this.getAttribute('slide'));
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("PATCH", "https://wt2019-db.firebaseio.com/Places/curated.json", true);
+        xhr.setRequestHeader('content-type', 'text/plain');
+        xhr.send(JSON.stringify(obj))
 	}
 
     changeSlides(value) {
         // console.log('New value for slides = ', value)
         const slide = (+value - 1) * 3;
         for (var i = 0; i < 3; i ++) {
-            this.links[i].setAttribute('href', '#details&name=' + this.cardInfo[slide + i].imgSrc.split('/')[2].split('.')[0]);
+            this.links[i].setAttribute('href', '#details&name=' + this.cardInfo[slide + i].imgSrc.split('/')[3].split('.')[0]);
             this.cards[i].setAttribute('imgSrc', this.cardInfo[slide + i].imgSrc);
             this.cards[i].setAttribute('heading', this.cardInfo[slide + i].heading);
             this.cards[i].setAttribute('subHeading', this.cardInfo[slide + i].subHeading);           

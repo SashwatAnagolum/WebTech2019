@@ -5,7 +5,7 @@ templateFormInput.innerHTML = `
 	<div class="formInputContainer" id="formInputContainer">
         <div class="field" id="field"></div>
         <div class="inputDiv" id="inputDiv">
-            <input class="inputField" id="inputField"></input>
+            <input type="text" class="inputField" id="inputField"></input>
         </div>
 	</div>
 `;

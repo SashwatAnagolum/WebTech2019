@@ -49,7 +49,7 @@ function setinnerContent(route) {
 			});
 
 			return `
-				<nav-bar theme="white" selected="3"></nav-bar>
+				<nav-bar theme="white" selected="3" text="Sign in" outlink="#login"></nav-bar>
 				<card-expansion id="cardExpansion" slide="1"></card-expansion>
 				<card-slider id="cardSlider" numSlides="4" slideNum="1"></card-slider>
 			`			
@@ -63,11 +63,11 @@ function setinnerContent(route) {
 			});
 
 			return `	
-				<nav-bar theme="black" selected="2" text="Sign Up" outlink="#signUp"></nav-bar>	
+				<nav-bar theme="black" selected="2" loggedIn="true" text="Sign Up" outlink="#signUp"></nav-bar>	
 				<card-carousel id="cardCarousel" slide="1"></card-carousel>
 				<card-slider id="cardSlider" numSlides="2" slideNum="1"></card-slider>	
 				<p class="normalHeading">Explore our curated experiences</p>
-				<p class="normalSubHeading">Choose from destinations that include Fiji, Crete, Bora Bora, and more - every location comes
+				<p class="normalSubHeading">Choose from destinations that include Tahiti, Berlin, Bora Bora, and more - every location comes
 				with an itinerary that allows you to make the most of your journey.</p>
 			`
 		} else if (route == "design") {
@@ -115,7 +115,7 @@ function setinnerContent(route) {
 						font-color: black;
 					}
 				</style>
-				<nav-bar theme="black" selected=""></nav-bar>
+				<nav-bar theme="black" selected="" text="Sign Up" outlink="#signUp"></nav-bar>
 				<p class="heading headingTwo">Welcome back</p>
 				<form-input type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
 				<form-input type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
@@ -158,7 +158,7 @@ function setinnerContent(route) {
 						font-color: black;
 					}
 				</style>
-				<nav-bar theme="black" selected=""></nav-bar>
+				<nav-bar theme="black" selected="" text="Sign In" outlink="#login"></nav-bar>
 				<p class="heading">Join the club</p>
 				<form-input type="text" name="Email" style="position: fixed; left: 41vw; top: 14vw;"></form-input>
 				<form-input type="password" name="Create password" style="position: fixed; left: 41vw; top: 21vw;"></form-input>
@@ -167,12 +167,18 @@ function setinnerContent(route) {
 				<p class="member">Already a member? </p><a href="#login" class="signUpLink">Log in</a>
 			`
 		} else if (route.split('&')[0] == 'relive') {
+			window.addEventListener('click', (e) => {
+				var slider = document.getElementById('cardSlider');
+				var carousel = document.getElementById('cardCarousel');
+				if (e.target == slider) {
+					carousel.setAttribute('slide', +(slider.getAttribute('slideNum')) + 1)
+				}
+			});
+
 			return `
-				<back-ground islanding="false"></back-ground>
-				<nav-bar theme="black" selected="2" text="Sign out"></nav-bar>
-				<custom-mouse theme="black"></custom-mouse>	
-				<card-carousel slide="1"></card-carousel>
-				<card-slider numSlides="2" slideNum="1"></card-slider>	
+				<nav-bar theme="black" loggedIn="true" selected="5" text="Sign out"></nav-bar>
+				<card-carousel id="cardCarousel" slide="1"></card-carousel>
+				<card-slider id="cardSlider" numSlides="2" slideNum="1"></card-slider>	
 				<p class="normalHeading">Relive your favourite memories</p>
 				<p class="normalSubHeading">Look at the trips you've saved to your collection.</p>
 			`	

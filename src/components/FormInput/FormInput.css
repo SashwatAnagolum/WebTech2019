@@ -23,6 +23,8 @@
     height: 100%; 
     border: transparent;
     background-color: transparent;
+    font-size: 1.25vw;
+    font-family: 'Roboto Slab'; 
 }
 
 .inputField::placeholder {
