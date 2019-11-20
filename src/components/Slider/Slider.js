@@ -32,33 +32,20 @@ class Slider extends HTMLElement {
 	connectedCallback() {
 		this.left.addEventListener("click", this.changeSlide);
 		this.right.addEventListener("click", this.changeSlide);
+		this.numSlides = this.getAttribute('numslides');
 	}
 
 	changeSlide = (e) => {
 		if (e.target.getAttribute('id') == 'left') {
-			this.setAttribute("slidenum", Math.abs(+this.getAttribute('slideNum') - 1)% 
-				+(this.getAttribute('numSlides')));
+			this.setAttribute('slidenum', Math.abs(+this.getAttribute('slidenum') - 1) % this.numSlides)		
 		} else {
-			this.setAttribute("slidenum", Math.abs(+this.getAttribute('slideNum') + 1)% 
-				+(this.getAttribute('numSlides')));
+			this.setAttribute('slidenum', (+this.getAttribute('slidenum') + 1) % this.numSlides)		
 		}
-	}
+	} 
 
-	static getObservedAttributes() {
+	static get observedAttributes() {
 		return ['slidenum']
 	}
-
-	// attributeChangedCallback(name, oldValue, newValue) {
-	// 	if (oldValue != newValue) {
-	// 		if (window.location.hash.split(&)[0] == "curated") {
-	// 			window.location.href = "#curated&slide=" + newValue;
-	// 		} else if (window.location.hash.split(&)[0] == "details") {
-	// 			continue;
-	// 		} else if (window.location.hash.split(&)[0] == "relive") {
-	// 			continue;
-	// 		}
-	// 	}
-	// }
 }
 
 window.customElements.define('card-slider', Slider); 

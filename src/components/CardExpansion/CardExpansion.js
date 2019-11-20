@@ -25,10 +25,8 @@ class CardExpansion extends HTMLElement {
         this.cardHeading = this.shadowRoot.getElementById('cardHeading');
         this.cardSubHeading = this.shadowRoot.getElementById('cardSubHeading');   
 	    this.cardText = this.shadowRoot.getElementById('cardText');
-    }
 
-	connectedCallback() {  
-        const card =  {
+        this.card =  {
             place: 'Bora Bora',
             country: 'French Polynesia',
             info: {
@@ -49,13 +47,11 @@ class CardExpansion extends HTMLElement {
                    description: 'Stay at some of the most scenic resorts in the world'   
                 }
             }
-        }
-        this.cardImage.setAttribute('src', card.info[this.getAttribute('slide')].image);
-        const text = card.info[this.getAttribute('slide')].description.split(' ');
-        this.cardText.innerHTML = '<span>' + text[0] + '</span>' + text.slice(1, ).join(' ');
-        this.cardHeading.innerHTML = card.place;
-        this.cardSubHeading.innerHTML = card.country;
-        this.updateSlide(this.getAttribute('slide'));
+        }        
+    }
+
+	connectedCallback() {  
+        this.updateSlide()
     }
 
   	static get observedAttributes() {
@@ -63,12 +59,18 @@ class CardExpansion extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(oldValue!=newValue)
+        if(oldValue!=newValue && oldValue)
+            console.log(newValue);
             this.updateSlide(newValue);
     }
     
     updateSlide(value) {
-        this.setAttribute("slide",value);
+        this.cardImage.setAttribute('src', this.card.info['slide' + value].image);
+        console.log('slide' + value);
+        const text = this.card.info['slide' + value].description.split(' ');
+        this.cardText.innerHTML = '<span>' + text[0] + '</span>' + text.slice(1, ).join(' ');
+        this.cardHeading.innerHTML = this.card.place;
+        this.cardSubHeading.innerHTML = this.card.country;
     }
 
 }

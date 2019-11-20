@@ -73,6 +73,7 @@ class CardCarousel extends HTMLElement {
     }    
 
     attributeChangedCallback(name, oldValue, newValue) {
+        console.log("oldValue: ", oldValue, "New value: ", newValue)
         if (oldValue != newValue) {
             this.changeSlides(newValue);
         }
@@ -80,11 +81,10 @@ class CardCarousel extends HTMLElement {
 
 	connectedCallback() {
 		this.changeSlides(this.getAttribute('slide'));
-
-        this.carouselContainer.addEventListener("hashchange", this.hashChangeHandler);
 	}
 
     changeSlides(value) {
+        // console.log('New value for slides = ', value)
         const slide = (+value - 1) * 3;
         for (var i = 0; i < 3; i ++) {
             this.links[i].setAttribute('href', '#details&name=' + this.cardInfo[slide + i].imgSrc.split('/')[2].split('.')[0]);
@@ -92,10 +92,6 @@ class CardCarousel extends HTMLElement {
             this.cards[i].setAttribute('heading', this.cardInfo[slide + i].heading);
             this.cards[i].setAttribute('subHeading', this.cardInfo[slide + i].subHeading);           
         }
-    }
-
-    hashChangeHandler(oldUrl, newUrl) {
-        console.log(oldUrl, newUrl)
     }
 }
 
