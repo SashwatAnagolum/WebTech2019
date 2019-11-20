@@ -27,7 +27,7 @@ class DropDownField extends HTMLElement {
         this.field.innerHTML = this.getAttribute("fieldText"); 
         //get country list
         if(this.getAttribute("fieldText") == "Location"){
-            const places = ['French Polynesia','Fiji','Greece','USA','Peru','Bangalore'];
+            const places = ['French Polynesia','Franch','Germany','China','Mexico'];
             for(var i in places) {
                 var place = document.createElement('option');
                 place.value = places[i];
@@ -57,7 +57,7 @@ class DropDownField extends HTMLElement {
         }
 
         if(this.getAttribute("fieldText") == "Biome"){
-            const biome = ['Beach','Jungle','Desert'];
+            const biome = ['Beach','City','Desert'];
             for(var i in biome) {
                 var biome1 = document.createElement('option');
                 biome1.value = biome[i];

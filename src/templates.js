@@ -71,14 +71,30 @@ function setinnerContent(route) {
 				with an itinerary that allows you to make the most of your journey.</p>
 			`
 		} else if (route == "design") {
+			window.addEventListener('click', (e) => {
+				create = document.getElementById('create') 
+				if (e.target == create) {
+					duration = document.getElementById('Duration').drop.selectedIndex;
+					duration = document.getElementById('Duration').drop[duration].getAttribute('value')
+					country = document.getElementById('Location').drop.selectedIndex;
+					country = document.getElementById('Location').drop[country].getAttribute('value')
+					theme = document.getElementById('Theme').drop.selectedIndex;
+					theme = document.getElementById('Theme').drop[theme].getAttribute('value')
+					biome = document.getElementById('Biome').drop.selectedIndex;
+					biome = document.getElementById('Biome').drop[biome].getAttribute('value')
+					changeUrl = "#relive&Location=" + country + "&Duration=" + duration + "&theme=" + theme + "&biome=" + biome
+					window.location.hash = changeUrl
+				}
+			})
 			return `
 				<nav-bar theme="black" selected="4"></nav-bar>
 				<p class="heading">Design the experience of a lifetime</p>
 				<p class="subHeading">Let us know what your idea of a vacation is</p>
-				<drop-down fieldText="Duration" style="position: fixed; left: 50vw; top: 18vw;"></drop-down>
-				<drop-down fieldText="Location" style="position: fixed; left: 30vw; top: 18vw;"></drop-down>
-				<drop-down fieldText="Theme" style="position: fixed; left: 50vw; top: 25vw;"></drop-down>
-				<drop-down fieldText="Biome" style="position: fixed; left: 30vw; top: 25vw;"></drop-down>
+				<drop-down fieldText="Duration" id="Duration" style="position: fixed; left: 50vw; top: 18vw;"></drop-down>
+				<drop-down fieldText="Location" id="Location" style="position: fixed; left: 30vw; top: 18vw;"></drop-down>
+				<drop-down fieldText="Theme" id="Theme" style="position: fixed; left: 50vw; top: 25vw;"></drop-down>
+				<drop-down fieldText="Biome" id="Biome" style="position: fixed; left: 30vw; top: 25vw;"></drop-down>
+				<new-button  id="create" type="grey" text="Create a trip" class="callToAction" check="False" style="position: fixed; left: 45vw; top: 34vw;"></new-button>
 			`
 		} else if (route == "login") {
 			return `
