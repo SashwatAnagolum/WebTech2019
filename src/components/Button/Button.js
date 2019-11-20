@@ -30,11 +30,16 @@ class Button extends HTMLElement {
             this.outerDiv.setAttribute('class', this.getAttribute('type')); 
         }
         this.innerDiv.setAttribute('class', this.getAttribute("type") + 'Inner'); 
-        this.link.setAttribute('href', this.getAttribute("outlink"));                   		
+
+        if (this.getAttribute("check") == 'true')
+            this.link.setAttribute('href', this.getAttribute("outlink")); 
+        else {
+            this.removeAttribute("href")
+        }                  		
     }
 
   	static get observedAttributes() {
-    	return ['text', 'type', 'outlink'];
+    	return ['text', 'type', 'check', 'outlink'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -47,6 +52,9 @@ class Button extends HTMLElement {
         this.setAttribute(name, value);
         if (name == 'text') {
             this.innerDiv.innerHTML = value;
+        }
+        if (name == 'check') {
+            this.link.setAttribute('href', value);
         }
         if (name == 'outlink') {
             this.link.setAttribute('href', value);
