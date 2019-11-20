@@ -47,6 +47,7 @@ wt2019-db
 		• country1:
 			• destination1:
 				• biome: biomeName //beach, jungle, desert, forest, city
+				• numItineraries: numItineraries
 				• itineraryItem1:
 					• pictureData: picDataBlob
 					• theme: themeName //leisure, backpacking, trekking, sightseeing
