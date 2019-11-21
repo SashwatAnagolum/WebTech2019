@@ -33,15 +33,25 @@ class CardExpansion extends HTMLElement {
         this.cardSubHeading.innerHTML = 'Loading...'
 
         var req = new XMLHttpRequest();
-        var country = window.location.hash.split('=')[1].split('&')[0];
-        var place = window.location.hash.split('=')[2];
-        req.addEventListener("load", () => { 
-            this.card = new Object();
-            this.card = JSON.parse(req.responseText);
-            console.log(this.card)
-            this.updateSlide(this.getAttribute('slide'))
-        });
-        req.open("GET", "https://wt2019-db.firebaseio.com/Places/countries/" + country + '/' + place + ".json");
+
+        if (window.location.hash.split('&')[0] == '#details') {
+            var country = window.location.hash.split('=')[1].split('&')[0];
+            var place = window.location.hash.split('=')[2];
+            req.addEventListener("load", () => { 
+                this.card = new Object();
+                this.card = JSON.parse(req.responseText);
+                console.log(this.card)
+                this.updateSlide(this.getAttribute('slide'));
+            });
+            req.open("GET", "https://wt2019-db.firebaseio.com/Places/countries/" + country + '/' + place + ".json");
+        } else if (window.location.hash.split('&')[0] == '#customtrip') {
+            const params = this.extractParams(window.location.hash);
+            req.addEventListener("load", () => {
+                this.processData(req);
+                this.updateSlide(this.getAttribute('slide'));
+            })
+
+        }   
         req.send();
     }
 
@@ -53,6 +63,16 @@ class CardExpansion extends HTMLElement {
         if(oldValue!=newValue && this.cardInfo)
             this.updateSlide(newValue);
     }
+
+    extractParams(string) {
+        let params = string.split('&');
+        var queryParams = new Object();
+        for (var i = 1; i < params.length; i ++) {
+            let pair = params[i].split('=');
+            queryParams[pair[0]] = decodeURIComponent(pair[1]);
+        }
+        return queryParams;
+    }      
     
     updateSlide(value) {
         this.cardImage.setAttribute('src', this.card.info['slide' + value].imgSrc);

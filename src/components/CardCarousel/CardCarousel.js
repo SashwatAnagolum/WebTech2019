@@ -63,7 +63,7 @@ class CardCarousel extends HTMLElement {
         })
         xhr.open("GET", "https://wt2019-db.firebaseio.com/Places/curated.json");
         xhr.send()
-	}
+	} 
 
     changeSlides(value) {
         // console.log('New value for slides = ', value)
