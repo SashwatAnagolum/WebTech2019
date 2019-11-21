@@ -69,7 +69,7 @@ class CardCarousel extends HTMLElement {
         // console.log('New value for slides = ', value)
         const slide = (+value - 1) * 3;
         for (var i = 0; i < 3; i ++) {
-            this.links[i].setAttribute('href', '#details&name=' + this.cardInfo[slide + i].imgSrc.split('/')[3].split('.')[0]);
+            this.links[i].setAttribute('href', '#details&country=' + this.cardInfo[slide + i].subHeading + '&place=' + this.cardInfo[slide + i].imgSrc.split('/')[3].split('.')[0]);
             this.cards[i].setAttribute('imgSrc', this.cardInfo[slide + i].imgSrc);
             this.cards[i].setAttribute('heading', this.cardInfo[slide + i].heading);
             this.cards[i].setAttribute('subHeading', this.cardInfo[slide + i].subHeading);           

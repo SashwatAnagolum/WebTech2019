@@ -37,7 +37,7 @@ class DropDownField extends HTMLElement {
         }
 
         if(this.getAttribute("fieldText") == "Duration"){
-            const duration = ['2 days', '3 days', '4 days', '5 days', '6 days', '1 week'];
+            const duration = ['2 days', '3 days', '4 days', '5 days', '6 days', '7 days'];
             for(var i in duration) {
                 var duration1 = document.createElement('option');
                 duration1.value = duration[i];
