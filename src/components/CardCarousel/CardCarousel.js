@@ -48,7 +48,10 @@ class CardCarousel extends HTMLElement {
     }
 
 	connectedCallback() {
-<<<<<<< HEAD
+        for (var i = 0; i < 3; i ++) {
+            this.cards[i].setAttribute('subHeading', 'Loading...');
+        }
+
         var xhr = new XMLHttpRequest();
         xhr.addEventListener("load", () => {
             this.cardInfo = new Array();
@@ -60,9 +63,6 @@ class CardCarousel extends HTMLElement {
         })
         xhr.open("GET", "https://wt2019-db.firebaseio.com/Places/curated.json");
         xhr.send()
-=======
-		this.changeSlides(this.getAttribute('slide'));
->>>>>>> fd08a03e75d1a6403dabef1d601f12ed58bd8035
 	}
 
     changeSlides(value) {
