@@ -63,7 +63,7 @@ function setinnerContent(route) {
 			});
 
 			return `	
-				<nav-bar theme="black" selected="2" loggedIn="true" text="Sign Up" outlink="#signUp"></nav-bar>	
+				<nav-bar theme="black" selected="2" text="Sign Up" outlink="#signUp"></nav-bar>	
 				<card-carousel id="cardCarousel" slide="1"></card-carousel>
 				<card-slider id="cardSlider" numSlides="2" slideNum="1"></card-slider>	
 				<p class="normalHeading">Explore our curated experiences</p>
@@ -111,7 +111,7 @@ function setinnerContent(route) {
 						var j = 0;
 						for(var i in loginDetails) {
 							if(email == i && pwd == loginDetails[i]){
-								alert('success')
+								//alert('success')
 								break;
 							}
 							j++;
@@ -168,7 +168,7 @@ function setinnerContent(route) {
 				</style>
 				<nav-bar theme="black" selected="" text="Sign Up" outlink="#signUp"></nav-bar>
 				<p class="heading headingTwo">Welcome back</p>
-				<form-input id="email" type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
+				<form-input id="email" type="text" name="Username" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
 				<form-input id="pwd" type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
 				<other-button id="login" type="grey" text="Log in" class="callToAction" style="position: fixed; left: 46.5vw; top: 35.5vw;"></other-button>
 				<p class="signup">Not a member?</p><a href="#signUp" class="signUpLink">Sign up here</a>
@@ -211,7 +211,7 @@ function setinnerContent(route) {
 				<nav-bar theme="black" selected="" text="Sign Up" outlink="#signUp"></nav-bar>
 				<p class="heading headingTwo">Welcome back</p>
 				<warning-box id="warning" text1="Sorry we didn't recognise you." text2="Please check the email and password" style="position: fixed; left: 35vw; top: 11vw;"></warning-box>
-				<form-input id="email" type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
+				<form-input id="email" type="text" name="Username" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
 				<form-input id="pwd" type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
 				<other-button id="login" type="grey" text="Log in" class="callToAction" style="position: fixed; left: 46.5vw; top: 35.5vw;"></other-button>
 				<p class="signup">Not a member?</p><a href="#signUp" class="signUpLink">Sign up here</a>
@@ -234,7 +234,7 @@ function setinnerContent(route) {
         	})
         	xhr.open("PATCH", "https://wt2019-db.firebaseio.com/Login/user.json");
 			xhr.send(JSON.stringify(loginDetails))
-			alert('success')
+			//alert('success')
 			return `
 				<style>
 					a {
@@ -272,7 +272,7 @@ function setinnerContent(route) {
 				</style>
 				<nav-bar theme="black" selected="" text="Sign In" outlink="#login"></nav-bar>
 				<p class="heading">Join the club</p>
-				<form-input id="email" type="text" name="Email" style="position: fixed; left: 41vw; top: 14vw;"></form-input>
+				<form-input id="email" type="text" name="Username" style="position: fixed; left: 41vw; top: 14vw;"></form-input>
 				<form-input id="pwd" type="password" name="Create password" style="position: fixed; left: 41vw; top: 21vw;"></form-input>
 				<form-input id="confpwd" type="password" name="Confirm password" style="position: fixed; left: 41vw; top: 28vw;"></form-input>
 				<new-button id="signUp" type="grey" text="Sign up" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 37vw;"></new-button>

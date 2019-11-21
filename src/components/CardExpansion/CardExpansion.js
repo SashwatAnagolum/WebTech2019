@@ -46,7 +46,7 @@ class CardExpansion extends HTMLElement {
         } else if (window.location.hash.split('&')[0] == '#customtrip') {
             const params = this.extractParams(window.location.hash);
             req.addEventListener("load", () => {
-                const data = this.processData(req, params);
+                this.card = this.processData(req, params);
                 this.updateSlide(this.getAttribute('slide'));
             })
             req.open('GET', 'https://wt2019-db.firebaseio.com/Places/countries/' + this.rmSpaces(params.Location) + '.json')
@@ -64,7 +64,10 @@ class CardExpansion extends HTMLElement {
                 }
             }
         }
-        return data;
+        for (var i in data) {
+            tempData = selectedData[i];
+        }
+        return tempData;
     }
 
     rmSpaces(string) {
