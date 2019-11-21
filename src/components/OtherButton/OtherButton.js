@@ -1,22 +1,20 @@
-const templateButton = document.createElement('template');
+const templateOtherButton = document.createElement('template');
 
-templateButton.innerHTML = `
-    <link rel="stylesheet" type="text/css" href="./components/Button/Button.css" />
-	<a href="" id="link" style="cursor:none; text-decoration: none">
+templateOtherButton.innerHTML = `
+    <link rel="stylesheet" type="text/css" href="./components/OtherButton/OtherButton.css" />
     <div class="" id="outer">
 		<div class="" id="inner"></div>
 	</div>
     </a>
 `;
 
-class Button extends HTMLElement {
+class OtherButton extends HTMLElement {
 	constructor() {
 		super();
 
     	this.attachShadow({ mode: 'open' });
-    	this.shadowRoot.appendChild(templateButton.content.cloneNode(true));	
+    	this.shadowRoot.appendChild(templateOtherButton.content.cloneNode(true));	
 
-        this.link = this.shadowRoot.getElementById('link');
     	this.outerDiv = this.shadowRoot.getElementById('outer');
     	this.innerDiv = this.shadowRoot.getElementById('inner');
 	}
@@ -29,12 +27,11 @@ class Button extends HTMLElement {
         } else {
             this.outerDiv.setAttribute('class', this.getAttribute('type')); 
         }
-        this.innerDiv.setAttribute('class', this.getAttribute("type") + 'Inner'); 
-        this.link.setAttribute('href', this.getAttribute("outlink"));                  		
+        this.innerDiv.setAttribute('class', this.getAttribute("type") + 'Inner');                 		
     }
 
   	static get observedAttributes() {
-    	return ['text', 'type', 'check', 'outlink'];
+    	return ['text', 'type'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -48,14 +45,8 @@ class Button extends HTMLElement {
         if (name == 'text') {
             this.innerDiv.innerHTML = value;
         }
-        if (name == 'check') {
-            this.link.setAttribute('href', value);
-        }
-        if (name == 'outlink') {
-            this.link.setAttribute('href', value);
-        }
     }
 
 }
 
-window.customElements.define('new-button', Button); 
+window.customElements.define('other-button', OtherButton); 

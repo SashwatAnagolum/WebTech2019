@@ -80,11 +80,6 @@ class CardCarousel extends HTMLElement {
 
 	connectedCallback() {
 		this.changeSlides(this.getAttribute('slide'));
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("PATCH", "https://wt2019-db.firebaseio.com/Places/curated.json", true);
-        xhr.setRequestHeader('content-type', 'text/plain');
-        xhr.send(JSON.stringify(obj))
 	}
 
     changeSlides(value) {
