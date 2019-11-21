@@ -26,32 +26,23 @@ class CardExpansion extends HTMLElement {
         this.cardSubHeading = this.shadowRoot.getElementById('cardSubHeading');   
 	    this.cardText = this.shadowRoot.getElementById('cardText');
 
-        this.card =  {
-            place: 'Bora Bora',
-            country: 'French Polynesia',
-            info: {
-                slide1: {
-                   image: './assets/CardExpansions/BoraBora/1.jpg',
-                   description: 'Stay at some of the most scenic resorts in the world'   
-                }, 
-                slide2: {
-                   image: './assets/CardExpansions/BoraBora/2.png',
-                   description: 'Snorkel amongst the fish in sand bottomed lagoons'   
-                }, 
-                slide3: {
-                   image: './assets/CardExpansions/BoraBora/3.png',
-                   description: 'Watch Polynesian dancers perform the traditional Tahitian fire dance'   
-                }, 
-                slide4: {
-                   image: './assets/CardExpansions/BoraBora/4.png',
-                   description: 'Sail at sunset as the lagoon turns magenta and the sky fades into a magical dusk'   
-                }
-            }
-        }        
+        this.card =  null;       
     }
 
 	connectedCallback() {  
-        this.updateSlide(this.getAttribute('slide'))
+        this.cardSubHeading.innerHTML = 'Loading...'
+
+        var req = new XMLHttpRequest();
+        var country = window.location.hash.split('=')[1].split('&')[0];
+        var place = window.location.hash.split('=')[2];
+        req.addEventListener("load", () => { 
+            this.card = new Object();
+            this.card = JSON.parse(req.responseText);
+            console.log(this.card)
+            this.updateSlide(this.getAttribute('slide'))
+        });
+        req.open("GET", "https://wt2019-db.firebaseio.com/Places/countries/" + country + '/' + place + ".json");
+        req.send();
     }
 
   	static get observedAttributes() {
@@ -59,12 +50,12 @@ class CardExpansion extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(oldValue!=newValue)
+        if(oldValue!=newValue && this.cardInfo)
             this.updateSlide(newValue);
     }
     
     updateSlide(value) {
-        this.cardImage.setAttribute('src', this.card.info['slide' + value].image);
+        this.cardImage.setAttribute('src', this.card.info['slide' + value].imgSrc);
         const text = this.card.info['slide' + value].description.split(' ');
         this.cardText.innerHTML = '<span>' + text[0] + '</span>' + text.slice(1, ).join(' ');
         this.cardHeading.innerHTML = this.card.place;

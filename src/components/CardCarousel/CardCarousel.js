@@ -19,38 +19,7 @@ class CardCarousel extends HTMLElement {
 	constructor() {
 		super();
 
-        this.cardInfo = [
-            {
-                imgSrc: './assets/cards/BoraBora.jpg',
-                heading: 'Bora Bora',
-                subHeading: 'French Polynesia'
-            },
-            {
-                imgSrc: './assets/cards/xian.jpg',
-                heading: 'Xian',
-                subHeading: 'China'
-            },             
-            {
-                imgSrc: './assets/cards/Cancun.jpeg',
-                heading: 'Cancun',
-                subHeading: 'Mexico'
-            },           
-            {
-                imgSrc: '../assets/cards/nice.jpg',
-                heading: 'Nice',
-                subHeading: 'France'
-            },
-            {
-                imgSrc: './assets/cards/tahiti.jpg',
-                heading: 'Tahiti',
-                subHeading: 'French Polynesia'
-            },
-            {
-                imgSrc: './assets/cards/berlin.jpg',
-                heading: 'Berlin',
-                subHeading: 'Germany'                
-            }
-        ]
+        this.cardInfo = null;
 
     	this.attachShadow({ mode: 'open' });
     	this.shadowRoot.appendChild(templateCardCarousel.content.cloneNode(true));	
@@ -73,18 +42,23 @@ class CardCarousel extends HTMLElement {
     }    
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
+        if (oldValue != newValue && this.cardInfo) {
             this.changeSlides(newValue);
         }
     }
 
 	connectedCallback() {
-		this.changeSlides(this.getAttribute('slide'));
-
         var xhr = new XMLHttpRequest();
-        xhr.open("PATCH", "https://wt2019-db.firebaseio.com/Places/curated.json", true);
-        xhr.setRequestHeader('content-type', 'text/plain');
-        xhr.send(JSON.stringify(obj))
+        xhr.addEventListener("load", () => {
+            this.cardInfo = new Array();
+            const data = JSON.parse(xhr.responseText);
+            for (var i in data) {
+                this.cardInfo.push(data[i]);
+            }
+            this.changeSlides(this.getAttribute('slide'));
+        })
+        xhr.open("GET", "https://wt2019-db.firebaseio.com/Places/curated.json");
+        xhr.send()
 	}
 
     changeSlides(value) {

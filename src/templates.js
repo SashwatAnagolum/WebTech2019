@@ -53,11 +53,11 @@ function setinnerContent(route) {
 				<card-expansion id="cardExpansion" slide="1"></card-expansion>
 				<card-slider id="cardSlider" numSlides="4" slideNum="1"></card-slider>
 			`			
-		} else if (route.split('&')[0] == "curated") {
+		} else if (route == "curated") {
 			window.addEventListener('click', (e) => {
 				var slider = document.getElementById('cardSlider');
 				var carousel = document.getElementById('cardCarousel');
-				if (e.target == slider) {
+				if (e.target == slider && route == "curated") {
 					carousel.setAttribute('slide', +(slider.getAttribute('slideNum')) + 1)
 				}
 			});
@@ -82,12 +82,12 @@ function setinnerContent(route) {
 					theme = document.getElementById('Theme').drop[theme].getAttribute('value')
 					biome = document.getElementById('Biome').drop.selectedIndex;
 					biome = document.getElementById('Biome').drop[biome].getAttribute('value')
-					changeUrl = "#relive&Location=" + country + "&Duration=" + duration + "&theme=" + theme + "&biome=" + biome
+					changeUrl = "#customtrip&Location=" + country + "&Duration=" + duration + "&theme=" + theme + "&biome=" + biome
 					window.location.hash = changeUrl
 				}
 			})
 			return `
-				<nav-bar theme="black" selected="4"></nav-bar>
+				<nav-bar theme="black" selected="4" text="Sign In" outlink="#login"></nav-bar>
 				<p class="heading">Design the experience of a lifetime</p>
 				<p class="subHeading">Let us know what your idea of a vacation is</p>
 				<drop-down fieldText="Duration" id="Duration" style="position: fixed; left: 50vw; top: 18vw;"></drop-down>
@@ -186,18 +186,33 @@ function setinnerContent(route) {
 			window.addEventListener('click', (e) => {
 				var slider = document.getElementById('cardSlider');
 				var carousel = document.getElementById('cardCarousel');
-				if (e.target == slider) {
+				if (e.target == slider && route.split('&')[0] == 'relive') {
 					carousel.setAttribute('slide', +(slider.getAttribute('slideNum')) + 1)
 				}
 			});
 
 			return `
-				<nav-bar theme="black" loggedIn="true" selected="5" text="Sign out"></nav-bar>
+				<nav-bar theme="black" selected="5" text="Sign out"></nav-bar>
 				<card-carousel id="cardCarousel" slide="1"></card-carousel>
 				<card-slider id="cardSlider" numSlides="2" slideNum="1"></card-slider>	
 				<p class="normalHeading">Relive your favourite memories</p>
 				<p class="normalSubHeading">Look at the trips you've saved to your collection.</p>
 			`	
+		} else if (route.split("&")[0] == 'customtrip') {
+			mouse.setAttribute("theme", "white");	
+			window.addEventListener('click', (e) => {
+				var slider = document.getElementById('cardSlider');
+				var carousel = document.getElementById('cardExpansion');
+				if (e.target == slider && route.split("&")[0] == 'customtrip') {
+					carousel.setAttribute('slide', +(slider.getAttribute('slideNum')) + 1)
+				}
+			});
+
+			return `
+				<nav-bar theme="white" selected="3" text="Sign in" outlink="#login"></nav-bar>
+				<card-expansion id="cardExpansion" slide="1"></card-expansion>
+				<card-slider id="cardSlider" numSlides="4" slideNum="1"></card-slider>
+			`		
 		}
 	}
 }

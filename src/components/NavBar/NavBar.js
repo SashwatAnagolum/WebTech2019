@@ -8,7 +8,7 @@ templateNavBar.innerHTML = `
     <div class="otherNav" id="otherNav">
         <a href="#" style="cursor:none"><div class="" id="1"></div></a>
         <a href="#curated" style="cursor:none"><div class="" id="2"></div></a>
-        <a href="#details" style="cursor:none"><div class="" id="3"></div></a>
+        <a href="#details&country=China&place=Xian" style="cursor:none"><div class="" id="3"></div></a>
         <a href="#design" style="cursor:none"><div class="" id="4"></div></a>
         <a href="#relive" style="cursor:none"><div class="hidden" id="5"></div></a>
     </div>
@@ -58,7 +58,6 @@ class NavBar extends HTMLElement {
         }        
 
         this.button.setAttribute("text",this.getAttribute("text"));
-        console.log(this.getAttribute('loggedIn'))
         this.button.setAttribute("outlink",this.getAttribute('outlink')); 
     }
 
