@@ -94,7 +94,7 @@ function setinnerContent(route) {
 				<drop-down fieldText="Location" id="Location" style="position: fixed; left: 30vw; top: 18vw;"></drop-down>
 				<drop-down fieldText="Theme" id="Theme" style="position: fixed; left: 50vw; top: 25vw;"></drop-down>
 				<drop-down fieldText="Biome" id="Biome" style="position: fixed; left: 30vw; top: 25vw;"></drop-down>
-				<new-button  id="create" type="grey" text="Create a trip" class="callToAction" check="False" style="position: fixed; left: 45vw; top: 34vw;"></new-button>
+				<other-button  id="create" type="grey" text="Create a trip" class="callToAction" check="False" style="position: fixed; left: 45vw; top: 34vw;"></other-button>
 			`
 		} else if (route == "login") {
 			return `
