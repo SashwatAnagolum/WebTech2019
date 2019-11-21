@@ -97,6 +97,41 @@ function setinnerContent(route) {
 				<other-button  id="create" type="grey" text="Create a trip" class="callToAction" check="False" style="position: fixed; left: 45vw; top: 34vw;"></other-button>
 			`
 		} else if (route == "login") {
+			var xhr = new XMLHttpRequest();
+        	xhr.addEventListener("load", () => {
+            	loginDetails = new Object();
+            	const data = JSON.parse(xhr.responseText);
+				loginDetails = data;
+				console.log(loginDetails)
+				login = document.getElementById('login')
+				window.addEventListener('click', (e) => {
+					if(e.target == login) {
+						email = document.getElementById('email').inputField.value;
+						pwd = document.getElementById('pwd').inputField.value;
+						var j = 0;
+						for(var i in loginDetails) {
+							if(email == i && pwd == loginDetails[i]){
+								alert('success')
+								break;
+							}
+							j++;
+						}
+						if(j < Object.keys(loginDetails).length) {
+							window.location.hash = '#design';
+						}
+						else {
+							warning = document.createElement('warning-box')
+
+							window.location.hash = '#loginFailed';
+						}
+					}
+				})
+
+        	})
+        	xhr.open("GET", "https://wt2019-db.firebaseio.com/Login/user.json");
+			xhr.send()
+			//alert(loginDetails)
+			
 			return `
 				<style>
 					a {
@@ -133,12 +168,73 @@ function setinnerContent(route) {
 				</style>
 				<nav-bar theme="black" selected="" text="Sign Up" outlink="#signUp"></nav-bar>
 				<p class="heading headingTwo">Welcome back</p>
-				<form-input type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
-				<form-input type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
-				<new-button type="grey" text="Log in" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 35.5vw;"></new-button>
+				<form-input id="email" type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
+				<form-input id="pwd" type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
+				<other-button id="login" type="grey" text="Log in" class="callToAction" style="position: fixed; left: 46.5vw; top: 35.5vw;"></other-button>
 				<p class="signup">Not a member?</p><a href="#signUp" class="signUpLink">Sign up here</a>
 			`
+		} else if (route == 'loginFailed') {
+			return `
+				<style>
+					a {
+						color: black;	
+					}
+
+					.headingTwo {
+						position: absolute;
+						top: 3.9vw;
+						left: 40vw;
+					}
+
+					.signup {
+						font-family:'Roboto Slab'; 
+						font-size: 1vw; 
+						text-align: center;
+						position: absolute;
+						top: 38vw;
+						left: 44vw;
+					}
+					.signUpLink {
+						z-index: -1;
+						height: 2vw;
+						width: 7vw;
+						font-family:'Roboto Slab'; 
+						font-size: 1vw; 
+						text-align: center;
+						position: absolute;
+						top: 39vw;
+						left: 51vw;
+						background-color: transparent;
+						font-color: black;
+					}
+				</style>
+				<nav-bar theme="black" selected="" text="Sign Up" outlink="#signUp"></nav-bar>
+				<p class="heading headingTwo">Welcome back</p>
+				<warning-box id="warning" text1="Sorry we didn't recognise you." text2="Please check the email and password" style="position: fixed; left: 35vw; top: 11vw;"></warning-box>
+				<form-input id="email" type="text" name="Email" style="position: fixed; left: 41vw; top: 15vw;"></form-input>
+				<form-input id="pwd" type="password" name="Password" style="position: fixed; left: 41vw; top: 22vw;"></form-input>
+				<other-button id="login" type="grey" text="Log in" class="callToAction" style="position: fixed; left: 46.5vw; top: 35.5vw;"></other-button>
+				<p class="signup">Not a member?</p><a href="#signUp" class="signUpLink">Sign up here</a>
+				`
 		} else if (route == 'signUp') {
+			var xhr = new XMLHttpRequest();
+			loginDetails = new Object();
+        	xhr.addEventListener("load", (e) => {
+				signUp = document.getElementById('signUp');
+				if(e.target == signUp) {
+					email = document.getElementById('email').inputField.value;
+					pwd = document.getElementById('pwd').inputField.value;
+					confpwd = document.getElementById('confpwd').inputField.value;
+					console.log(email)
+					if(pwd == confpwd) {
+						loginDetails = {email: pwd}
+					}
+					console.log(loginDetails)
+				}
+        	})
+        	xhr.open("PATCH", "https://wt2019-db.firebaseio.com/Login/user.json");
+			xhr.send(JSON.stringify(loginDetails))
+			alert('success')
 			return `
 				<style>
 					a {
@@ -176,10 +272,10 @@ function setinnerContent(route) {
 				</style>
 				<nav-bar theme="black" selected="" text="Sign In" outlink="#login"></nav-bar>
 				<p class="heading">Join the club</p>
-				<form-input type="text" name="Email" style="position: fixed; left: 41vw; top: 14vw;"></form-input>
-				<form-input type="password" name="Create password" style="position: fixed; left: 41vw; top: 21vw;"></form-input>
-				<form-input type="password" name="Confirm password" style="position: fixed; left: 41vw; top: 28vw;"></form-input>
-				<new-button type="grey" text="Sign up" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 37vw;"></new-button>
+				<form-input id="email" type="text" name="Email" style="position: fixed; left: 41vw; top: 14vw;"></form-input>
+				<form-input id="pwd" type="password" name="Create password" style="position: fixed; left: 41vw; top: 21vw;"></form-input>
+				<form-input id="confpwd" type="password" name="Confirm password" style="position: fixed; left: 41vw; top: 28vw;"></form-input>
+				<new-button id="signUp" type="grey" text="Sign up" class="callToAction" outlink="#curated" style="position: fixed; left: 46.5vw; top: 37vw;"></new-button>
 				<p class="member">Already a member? </p><a href="#login" class="signUpLink">Log in</a>
 			`
 		} else if (route.split('&')[0] == 'relive') {
